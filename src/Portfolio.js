@@ -584,6 +584,7 @@ const Portfolio = () => {
                 key={social.label}
                     href={social.href}
                     target='_blank'
+                    rel="noreferrer"
                 className={`group w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-2xl border border-white/20 hover:border-cyan-400/70 hover:bg-cyan-400/20 hover:scale-125 hover:rotate-12 transition-all duration-500 ${social.color}`}
                 title={social.label}
               >
