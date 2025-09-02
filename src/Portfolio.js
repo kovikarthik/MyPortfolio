@@ -8,7 +8,6 @@ const Portfolio = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [currentProject, setCurrentProject] = useState(0);
-  const threeRef = useRef(null);
   const canvasRef = useRef(null);
   const sceneRef = useRef(null);
   const rendererRef = useRef(null);
