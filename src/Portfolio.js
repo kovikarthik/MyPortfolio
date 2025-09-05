@@ -15,7 +15,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     // Loading animation
-    setTimeout(() => setIsLoading(false), 3000);
+    setTimeout(() => setIsLoading(false), 2000);
 
     // Scroll tracking with intersection observer
     const sections = document.querySelectorAll('section[id]');
@@ -520,7 +520,7 @@ const Portfolio = () => {
         </div>
 
         <div className="container mx-auto px-6 text-center relative z-10">
-          <div className="mb-12">
+          <div className="mb-12 mt-32 sm:mt-15 md:mt-10 xl:mt-5">
             <div className="text-xl text-cyan-400 mb-6 tracking-[0.5em] uppercase font-light opacity-0 animate-fade-in-up" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
                Full Stack Developer
             </div>
@@ -669,12 +669,12 @@ const Portfolio = () => {
                   { label: 'Experience', value: '3+ Years', icon: 'bx-time', color: 'from-orange-400 to-red-500' }
                 ].map((stat) => (
                   <div key={stat.label} className="group relative">
-                    <div className="bg-white/10 p-8 rounded-2xl backdrop-blur-2xl border border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:scale-105 hover:rotate-1">
-                      <div className="flex items-center space-x-4 mb-4">
-                        <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${stat.color} flex items-center justify-center`}>
-                          <i className={`bx ${stat.icon} text-2xl text-white`} />
+                    <div className="bg-white/10 p-4 md:p-8 rounded-2xl backdrop-blur-2xl border border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:scale-105 hover:rotate-1">
+                      <div className="flex flex-row items-center justify-center space-x-2 xl:space-x-4 mb-4">
+                        <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r ${stat.color} flex items-center justify-center`}>
+                          <i className={`bx ${stat.icon} text-xl xl:text-2xl text-white`} />
                         </div>
-                        <div className={`text-3xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+                        <div className={`text-xl md:text-2xl xl:text-3xl leading-6 font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
                           {stat.value}
                         </div>
                       </div>
@@ -760,7 +760,7 @@ const Portfolio = () => {
                         {exp.achievements.map((achievement, idx) => (
                           <li key={idx} className="flex items-start space-x-4 group/item">
                             <i className="bx bx-check-circle text-cyan-400 text-xl mt-1 group-hover/item:scale-125 transition-transform" />
-                            <span className="text-gray-300 leading-relaxed text-lg group-hover/item:text-white transition-colors">{achievement}</span>
+                            <span className="text-gray-300 text-start leading-relaxed text-lg group-hover/item:text-white transition-colors">{achievement}</span>
                           </li>
                         ))}
                       </ul>
