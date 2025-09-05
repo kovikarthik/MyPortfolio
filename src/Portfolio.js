@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import NativeNest_HomePage from "./Assets/NativeNest_HomePage.png";
+import FutureU_App from "./Assets/FutureU_App.png";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -278,20 +280,26 @@ const Portfolio = () => {
       longDescription: 'Led a 4-member team to build a comprehensive grocery platform featuring real-time inventory management, secure payment integration, advanced caching strategies, and seamless user experience across mobile and web platforms.',
       tech: ['React Native', 'GraphQL', 'AWS', 'Redis', 'MongoDB', 'Node.js'],
       stats: { users: '30K+', performance: '30%↑', team: '4', uptime: '99.9%' },
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      category: 'Mobile App',
+      image: NativeNest_HomePage,
+      categories: ['Mobile App', 'Web App'],
       year: '2024',
       featured: true
     },
     {
       id: 2,
       title: 'FutureU Mobile App',
-      description: 'End-to-end mobile application development for 12,000+ monthly users with accessibility standards.',
-      longDescription: 'Independently developed a comprehensive mobile app with WCAG 2.1/2.2 AA accessibility standards, audio streaming SDK integration, and campus Single Sign-On for seamless user access.',
-      tech: ['React Native', 'Node.js', 'AWS LightSail', 'SSO', 'Audio SDK'],
-      stats: { users: '12K+', accessibility: 'AA', deployment: '40%↓' },
-      image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
-      category: 'Mobile App',
+      description: 'An end-to-end mobile application that centralizes all student resources, relocation guides, and essential campus services for 42k+ CSULB students.',
+      // longDescription: 'Developed and deployed the "FutureU" mobile application, a comprehensive resource hub for California State University, Long Beach (CSULB) students. The app centralizes critical information on student resources, relocation services, and various campus services, enhancing the student experience and accessibility. The project involved implementing in-app notifications, push notifications, and a student feedback system to improve communication and gather insights for future enhancements.',
+      longDescription: 'Developed the FutureU mobile app for CSULB students, serving as a central hub for campus resources, relocation, and services. The project included implementing in-app and push notifications for timely updates and a feedback system to drive continuous improvement.',
+      tech: ['React Native', 'Node.js', 'AWS', 'FCM/APNS', 'SSO'],
+      stats: {
+        'In Beta Testing' : 'status',
+        'iOS, Android': 'platforms',
+        'Solo' : "developer",
+        '42K+ Users': 'goal'
+      },
+      image: FutureU_App,
+      categories: ['Mobile App'],
       year: '2025',
       featured: true
     },
@@ -303,7 +311,7 @@ const Portfolio = () => {
       tech: ['Next.js', 'Tailwind', 'Redis', 'Razorpay', 'Magento', 'SEO'],
       stats: { performance: '25%↑', seo: '100%', conversion: '15%↑' },
       image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop',
-      category: 'E-commerce',
+      categories: ['E-commerce'],
       year: '2024',
       featured: false
     },
@@ -315,7 +323,7 @@ const Portfolio = () => {
       tech: ['C#', 'Miracast', 'Windows API', 'WPF', 'Wi-Fi Direct'],
       stats: { platforms: '3+', latency: '<100ms', users: '5K+' },
       image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&h=400&fit=crop',
-      category: 'Desktop App',
+      categories: ['Desktop App'],
       year: '2023',
       featured: false
     },
@@ -327,7 +335,7 @@ const Portfolio = () => {
       tech: ['Angular', 'Python', 'TensorFlow', 'Node.js', 'Twilio', 'AI'],
       stats: { accuracy: '94%', coverage: '10K+', award: 'National' },
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop',
-      category: 'AI/ML',
+      categories: ['AI/ML'],
       year: '2022',
       featured: false
     },
@@ -339,7 +347,7 @@ const Portfolio = () => {
       tech: ['Angular', 'NestJS', 'MongoDB', 'Dasha AI', 'Payment Gateway'],
       stats: { bookings: '1K+', automation: '80%', satisfaction: '95%' },
       image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop',
-      category: 'AI/Automation',
+      categories: ['AI/Automation'],
       year: '2022',
       featured: false
     }
@@ -902,9 +910,9 @@ const Portfolio = () => {
                         <div className="space-y-8">
                           <div>
                             <div className="flex items-center space-x-4 mb-4">
-                              <span className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full text-cyan-400 text-sm font-bold border border-cyan-400/30">
-                                {project.category}
-                              </span>
+                              {project.categories.map(category =><span className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full text-cyan-400 text-sm font-bold border border-cyan-400/30">
+                                {category}
+                              </span>)}
                               <span className="text-gray-400 font-medium">{project.year}</span>
                             </div>
                             <h3 className="text-4xl font-black text-white mb-6">{project.title}</h3>
