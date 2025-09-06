@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import NativeNest_HomePage from "./Assets/NativeNest_HomePage.png";
+import NativeNest_Event from "./Assets/NativeNest_Event.jpeg";
 import FutureU_App from "./Assets/FutureU_App.png";
+import Origem from "./Assets/Origem.png";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -17,7 +18,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     // Loading animation
-    setTimeout(() => setIsLoading(false), 2000);
+    setTimeout(() => setIsLoading(false), 1000);
 
     // Scroll tracking with intersection observer
     const sections = document.querySelectorAll('section[id]');
@@ -276,12 +277,13 @@ const Portfolio = () => {
     {
       id: 1,
       title: 'NativeNest Grocery Platform',
-      description: 'Production-grade mobile and web platform serving 30,000+ users with React Native, GraphQL, and AWS infrastructure.',
-      longDescription: 'Led a 4-member team to build a comprehensive grocery platform featuring real-time inventory management, secure payment integration, advanced caching strategies, and seamless user experience across mobile and web platforms.',
-      tech: ['React Native', 'GraphQL', 'AWS', 'Redis', 'MongoDB', 'Node.js'],
-      stats: { users: '30K+', performance: '30%↑', team: '4', uptime: '99.9%' },
-      image: NativeNest_HomePage,
-      categories: ['Mobile App', 'Web App'],
+      description: 'E-commerce grocery platform with mobile and web apps, built using React Native, React, GraphQL, and AWS deployment.',
+      longDescription: 'Led a 4-member team to deliver production-grade mobile and web apps with React Native, GraphQL APIs, secure payments, Google Maps, push notifications, and CI/CD on AWS. Optimized checkout with Apollo caching and integrated real-time inventory for 30,000+ active users.',
+      tech: ['React Native', 'React', 'Node.js' , 'Express.js', 'GraphQL', 'MongoDB', 'AWS', 'Apollo', 'CI/CD'],
+      stats: { Speed: '30%↑ faster loads', Team: '4', Uptime: '99.9%', Users: '30K+' },
+      image: NativeNest_Event,
+      categories: ['Mobile App', 'Web App', 'E-commerce'],
+      navigationLink : 'https://nativenest.in/',
       year: '2024',
       featured: true
     },
@@ -291,29 +293,37 @@ const Portfolio = () => {
       description: 'An end-to-end mobile application that centralizes all student resources, relocation guides, and essential campus services for 42k+ CSULB students.',
       // longDescription: 'Developed and deployed the "FutureU" mobile application, a comprehensive resource hub for California State University, Long Beach (CSULB) students. The app centralizes critical information on student resources, relocation services, and various campus services, enhancing the student experience and accessibility. The project involved implementing in-app notifications, push notifications, and a student feedback system to improve communication and gather insights for future enhancements.',
       longDescription: 'Developed the FutureU mobile app for CSULB students, serving as a central hub for campus resources, relocation, and services. The project included implementing in-app and push notifications for timely updates and a feedback system to drive continuous improvement.',
-      tech: ['React Native', 'Node.js', 'AWS', 'FCM/APNS', 'SSO'],
+      tech: ['React Native', 'Node.js', 'Express.js', 'AWS', 'FCM/APNS', 'SSO'],
       stats: {
-        'In Beta Testing' : 'status',
-        'iOS, Android': 'platforms',
-        'Solo' : "developer",
-        '42K+ Users': 'goal'
+        Status : 'In Beta Testing' ,
+        Platforms : 'iOS, Android',
+        Developer : 'Solo',
+        Goal : '42K+ Users'
       },
       image: FutureU_App,
-      categories: ['Mobile App'],
+      categories: ['Mobile App', 'Web App'],
       year: '2025',
+      navigationLink : 'https://www.asicsulb.org/corporate/discover/futureu',
       featured: true
     },
     {
       id: 3,
-      title: 'Origem Jewellery E-commerce',
-      description: 'High-performance e-commerce platform with Next.js, Redis caching, and integrated payment systems.',
-      longDescription: 'Delivered a stunning jewellery shopping experience with dynamic product pages, SEO optimization, secure Razorpay integration, and Redis middleware that cut load times by 25%.',
-      tech: ['Next.js', 'Tailwind', 'Redis', 'Razorpay', 'Magento', 'SEO'],
-      stats: { performance: '25%↑', seo: '100%', conversion: '15%↑' },
-      image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop',
-      categories: ['E-commerce'],
+      title: 'Origem Jewellery Shopping Application',
+      description: 'E-commerce for a fast-growing LGD jewelry brand, built with Next.js + Magento and Redis caching.',
+      longDescription: 'Built a responsive storefront with Next.js, Magento backend, Redis caching, and Razorpay payments. Added ISR and a dynamic sitemap for SEO. Live achieving ₹20M topline revenue in the first 3 months.',
+      tech: ['Next.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'Redis', 'Magento', 'Razorpay', 'SEO', 'ISR', 'AWS'],
+      stats: {
+        Speed : '25%↑ faster loads' ,
+        SEO : 'Dynamic SEO sitemap' ,
+        Scalability : 'ISR optimized' ,
+        Revenue : '₹20M in first 3 months' ,
+        Users : '10,000+ monthly' ,
+      },
+      image: Origem,
+      categories: ['E-commerce', 'Retail', 'LGD Jewelry'],
       year: '2024',
-      featured: false
+      navigationLink : 'https://origemindia.com/',
+      featured: true
     },
     {
       id: 4,
@@ -325,6 +335,7 @@ const Portfolio = () => {
       image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&h=400&fit=crop',
       categories: ['Desktop App'],
       year: '2023',
+      navigationLink : '',
       featured: false
     },
     {
@@ -337,6 +348,7 @@ const Portfolio = () => {
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop',
       categories: ['AI/ML'],
       year: '2022',
+      navigationLink : '',
       featured: false
     },
     {
@@ -349,6 +361,7 @@ const Portfolio = () => {
       image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop',
       categories: ['AI/Automation'],
       year: '2022',
+      navigationLink : 'https://bookingbee.ai/',
       featured: false
     }
   ];
@@ -476,7 +489,7 @@ const Portfolio = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden w-14 h-14 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-2xl border border-white/20 hover:border-cyan-400/50 hover:bg-cyan-400/20 transition-all duration-300"
             >
-              <i className={`bx ${isMenuOpen ? 'bx-x' : 'bx-menu'} text-2xl transition-transform duration-300 ${isMenuOpen ? 'rotate-180' : ''}`} />
+              <i className={`bx ${isMenuOpen ? 'bx-x' : 'bx-menu'} text-2xl transition-transform duration-300 ${isMenuOpen ? 'rotate-180': '' }`} />
             </button>
           </div>
 
@@ -905,8 +918,8 @@ const Portfolio = () => {
               <div className="overflow-hidden rounded-3xl">
                 <div className="flex transition-transform duration-700 ease-out" style={{transform: `translateX(-${currentProject * 100}%)`}}>
                   {projects.filter(p => p.featured).map((project) => (
-                    <div key={project.id} className="w-full flex-shrink-0">
-                      <div className="grid lg:grid-cols-2 gap-12 items-center p-12 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl border border-white/20">
+                    <div key={project.id} className="w-full flex flex-shrink-0">
+                      <div className="grid lg:grid-cols-2 gap-12 items-center p-12 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl">
                         <div className="space-y-8">
                           <div>
                             <div className="flex items-center space-x-4 mb-4">
@@ -915,15 +928,20 @@ const Portfolio = () => {
                               </span>)}
                               <span className="text-gray-400 font-medium">{project.year}</span>
                             </div>
-                            <h3 className="text-4xl font-black text-white mb-6">{project.title}</h3>
+                            <h3
+                              onClick={() => project?.navigationLink && window.open(project.navigationLink, "_blank")}
+                              className="text-4xl font-black text-white mb-6 cursor-pointer transition-colors hover:underline duration-100 transition-transform active:scale-95 ease-in-out"
+                            >
+                              {project.title}
+                            </h3>
                             <p className="text-xl text-gray-300 leading-relaxed mb-8">{project.longDescription}</p>
                           </div>
 
                           <div className="grid grid-cols-3 gap-6">
                             {Object.entries(project.stats).map(([key, value]) => (
                               <div key={key} className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
-                                <div className="text-2xl font-bold text-cyan-400">{value}</div>
-                                <div className="text-xs text-gray-400 uppercase tracking-widest">{key}</div>
+                                <div className="text-2xl font-bold text-cyan-400">{key}</div>
+                                <div className="text-xs text-gray-400 uppercase tracking-widest">{value}</div>
                               </div>
                             ))}
                           </div>
@@ -972,9 +990,9 @@ const Portfolio = () => {
           {/* All Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {projects.map((project, index) => (
-              <div key={project.id} className="group relative">
+              <div key={project.id} className="group relative flex flex-1 justify-between">
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative bg-white/10 rounded-2xl backdrop-blur-2xl border border-white/20 overflow-hidden hover:border-cyan-400/50 hover:scale-105 transition-all duration-500">
+                <div className="relative bg-white/10 rounded-2xl backdrop-blur-2xl border border-white/20 overflow-hidden hover:border-cyan-400/50 hover:scale-105 transition-all duration-500 flex flex-col">
                   <div className="relative h-48 overflow-hidden">
                     <img 
                       src={project.image} 
@@ -987,15 +1005,20 @@ const Portfolio = () => {
                         {project.year}
                       </span>
                     </div>
-                    <div className="absolute bottom-4 left-4">
-                      <span className="px-3 py-1 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full text-purple-300 text-xs font-bold border border-purple-400/50 backdrop-blur-xl">
-                        {project.category}
-                      </span>
+                    <div className="flex absolute bottom-2 left-2 gap-2">
+                      {project.categories.map(category =><span className="px-3 py-1 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full text-purple-300 text-xs font-bold border border-purple-400/50 backdrop-blur-xl">
+                          {category}
+                        </span>)}
                     </div>
                   </div>
 
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">{project.title}</h3>
+                  <div className="p-8 flex flex-col justify-between flex-1">
+                    <h3 
+                    onClick={() => project?.navigationLink && window.open(project.navigationLink, "_blank")}
+                    className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors cursor-pointer hover:underline duration-100 transition-transform active:scale-95 ease-in-out"
+                    >
+                      {project.title}
+                    </h3>
                     <p className="text-gray-400 leading-relaxed mb-6">{project.description}</p>
                     
                     <div className="flex flex-wrap gap-2 mb-6">
@@ -1015,12 +1038,14 @@ const Portfolio = () => {
                       <div className="flex space-x-4">
                         {Object.entries(project.stats).slice(0, 2).map(([key, value]) => (
                           <div key={key} className="text-center">
-                            <div className="text-lg font-bold text-cyan-400">{value}</div>
-                            <div className="text-xs text-gray-500 uppercase">{key}</div>
+                            <div className="text-lg font-bold text-cyan-400">{key}</div>
+                            <div className="text-xs text-gray-500 uppercase">{value}</div>
                           </div>
                         ))}
                       </div>
-                      <button className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center hover:scale-125 hover:rotate-12 transition-all duration-300 group/btn">
+                      <button
+                        onClick={() => project?.navigationLink && window.open(project.navigationLink, "_blank")}
+                        className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center hover:scale-125 hover:rotate-12 transition-all duration-300 group/btn">
                         <i className="bx bx-right-arrow-alt text-xl text-white group-hover/btn:translate-x-1 transition-transform" />
                       </button>
                     </div>
