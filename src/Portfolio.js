@@ -280,7 +280,7 @@ const Portfolio = () => {
       description: 'E-commerce grocery platform with mobile and web apps, built using React Native, React, GraphQL, and AWS deployment.',
       longDescription: 'Led a 4-member team to deliver production-grade mobile and web apps with React Native, GraphQL APIs, secure payments, Google Maps, push notifications, and CI/CD on AWS. Optimized checkout with Apollo caching and integrated real-time inventory for 30,000+ active users.',
       tech: ['React Native', 'React', 'Node.js' , 'Express.js', 'GraphQL', 'MongoDB', 'AWS', 'Apollo', 'CI/CD'],
-      stats: { Speed: '30%↑ faster loads', Team: '4', Uptime: '99.9%', Users: '30K+' },
+      stats: { Speed: '30%↑', Team: '4', Uptime: '99.9%', Users: '30K+' },
       image: NativeNest_Event,
       categories: ['Mobile App', 'Web App', 'E-commerce'],
       navigationLink : 'https://nativenest.in/',
@@ -750,14 +750,14 @@ const Portfolio = () => {
             {experience.map((exp, index) => (
               <div key={index} className="group relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative bg-white/10 p-10 rounded-3xl backdrop-blur-2xl border border-white/20 hover:border-cyan-400/50 transition-all duration-500 group-hover:scale-[1.02]">
+                <div className="relative bg-white/10 p-5 md:p-8 xl:p-10 rounded-3xl backdrop-blur-2xl border border-white/20 hover:border-cyan-400/50 transition-all duration-500 group-hover:scale-[1.02]">
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
-                    <div className="flex items-start space-x-6 text-left">
-                      <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${exp.current ? 'from-green-400 to-emerald-500' : 'from-blue-400 to-purple-500'} flex items-center justify-center`}>
-                        <i className="bx bx-briefcase text-2xl text-white" />
+                    <div className="flex items-start space-x-4 xl:space-x-6 text-left">
+                      <div className={`p-3 xl:p-4 w-16 rounded-full bg-gradient-to-r ${exp.current ? 'from-green-400 to-emerald-500' : 'from-blue-400 to-purple-500'} flex items-center justify-center`}>
+                        <i className="bx bx-briefcase text-xl xl:text-2xl text-white" />
                       </div>
                       <div>
-                        <h3 className="text-3xl font-black text-white mb-3">{exp.role}</h3>
+                        <h3 className="text-2xl xl:text-3xl font-black text-white mb-3">{exp.role}</h3>
                         <div className="text-cyan-400 text-xl font-bold mb-2">{exp.company}</div>
                         <div className="text-gray-400 flex items-center space-x-2">
                           <i className="bx bx-map text-lg" />
@@ -919,11 +919,11 @@ const Portfolio = () => {
                 <div className="flex transition-transform duration-700 ease-out" style={{transform: `translateX(-${currentProject * 100}%)`}}>
                   {projects.filter(p => p.featured).map((project) => (
                     <div key={project.id} className="w-full flex flex-shrink-0">
-                      <div className="grid lg:grid-cols-2 gap-12 items-center p-12 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl">
-                        <div className="space-y-8">
+                      <div className="grid lg:grid-cols-2 gap-12 items-center p-5 md:p-8 xl:p-12 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl border border-white/20 rounded-3xl">
+                        <div className="space-y-4 md:space-y-6 xl:space-y-8">
                           <div>
-                            <div className="flex items-center space-x-4 mb-4">
-                              {project.categories.map(category =><span className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full text-cyan-400 text-sm font-bold border border-cyan-400/30">
+                            <div className="flex flex-wrap gap-2 items-center mb-4">
+                              {project.categories.map(category =><span className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full text-cyan-400 text-xs md:text-sm font-bold border border-cyan-400/30">
                                 {category}
                               </span>)}
                               <span className="text-gray-400 font-medium">{project.year}</span>
@@ -937,11 +937,11 @@ const Portfolio = () => {
                             <p className="text-xl text-gray-300 leading-relaxed mb-8">{project.longDescription}</p>
                           </div>
 
-                          <div className="grid grid-cols-3 gap-6">
+                          <div className="grid grid-cols-3 gap-2 md:gap-4 xl:gap-6">
                             {Object.entries(project.stats).map(([key, value]) => (
-                              <div key={key} className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
-                                <div className="text-2xl font-bold text-cyan-400">{key}</div>
-                                <div className="text-xs text-gray-400 uppercase tracking-widest">{value}</div>
+                              <div key={key} className="text-center p-3 md:p-4 bg-white/5 rounded-xl border border-white/10">
+                                <div className="text-sm md:text-xl xl:text-2xl font-bold text-cyan-400">{key}</div>
+                                <div className="text-xs text-gray-400 uppercase md:tracking-widest">{value}</div>
                               </div>
                             ))}
                           </div>
