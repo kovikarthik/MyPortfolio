@@ -101,7 +101,7 @@ export default function ContactMe() {
             <div className="grid md:grid-cols-2 gap-12">
               {/* Contact Info */}
               <div className="space-y-8">
-                <div className="bg-white/10 p-8 rounded-2xl backdrop-blur-2xl border border-white/20">
+                <div className="bg-white/10 p-5 xl:p-8 rounded-2xl backdrop-blur-2xl border border-white/20">
                   <h3 className="text-2xl font-bold text-white mb-6 flex items-center space-x-3">
                     <i className="bx bx-conversation text-cyan-400 text-3xl" />
                     <span>Get In Touch</span>
@@ -164,7 +164,7 @@ export default function ContactMe() {
               </div>
 
               {/* Contact Form */}
-              <div className="bg-white/10 p-8 rounded-2xl backdrop-blur-2xl border border-white/20">
+              <div className="bg-white/10 p-5 xl:p-8 rounded-2xl backdrop-blur-2xl border border-white/20">
                 <h3 className="text-2xl font-bold text-white mb-8 flex items-center space-x-3">
                   <i className="bx bx-send text-cyan-400 text-3xl" />
                   <span>Send Message</span>
