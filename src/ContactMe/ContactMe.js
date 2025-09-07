@@ -152,6 +152,7 @@ export default function ContactMe() {
                         key={social.label}
                         href={social.href}
                         target='_blank'
+                        rel="noreferrer"
                         className={`group w-14 h-14 bg-gradient-to-r ${social.color} rounded-full flex items-center justify-center transition-all ease-in-out duration-100 hover:scale-125 hover:rotate-12 active:scale-100 shadow-lg`}
                         title={social.label}
                       >

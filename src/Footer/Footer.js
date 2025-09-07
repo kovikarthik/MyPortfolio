@@ -25,6 +25,7 @@ export default function Footer() {
                 key={index}
                 href={social.href}
                 target='_blank'
+                rel="noreferrer"
                 className="group w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/20 hover:border-cyan-400/50 hover:bg-cyan-400/20 transition-all hover:scale-125 hover:rotate-12 ease-in-out duration-100 active:scale-100"
               >
                 <i className={`bx ${social.icon} text-xl group-hover:text-cyan-400 transition-colors`} />
