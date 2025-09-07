@@ -169,7 +169,7 @@ export default function ContactMe() {
                   <span>Send Message</span>
                 </h3>
                 
-                <form className="space-y-6" onSubmit={handleSubmit}>
+                <form ref={formRef} className="space-y-6" onSubmit={handleSubmit}>
                  <input 
                     name='name'
                     value={form.name}
