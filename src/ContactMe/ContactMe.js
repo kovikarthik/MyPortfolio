@@ -237,7 +237,7 @@ export default function ContactMe() {
           </div>
         </div>
         <div class="badge-base LI-profile-badge container mx-auto px-6 flex justify-center mt-12" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="karthikkovi" data-version="v1">
-          <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/karthikkovi?trk=profile-badge"></a>
+          <a class="badge-base__link LI-simple-link" aria-label="Karthik Kovi LinkedIn Profile" href="https://www.linkedin.com/in/karthikkovi?trk=profile-badge"></a>
         </div>
 
       </section>
