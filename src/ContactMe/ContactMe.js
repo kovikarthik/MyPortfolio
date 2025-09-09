@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import emailjs from "@emailjs/browser";
 import { toast } from 'react-toastify';
 
@@ -23,6 +23,22 @@ export default function ContactMe() {
             [name]: value,
         });
     };
+
+      useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://platform.linkedin.com/badges/js/profile.js';
+        script.async = true;
+        script.defer = true;
+        script.type = 'text/javascript';
+
+        document.body.appendChild(script);
+
+        return () => {
+          // Clean up the script when the component unmounts
+          document.body.removeChild(script);
+        };
+      }, []); // The empty array ensures this runs only once after the initial render
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -220,6 +236,10 @@ export default function ContactMe() {
             </div>
           </div>
         </div>
+        <div class="badge-base LI-profile-badge container mx-auto px-6 flex justify-center mt-12" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="karthikkovi" data-version="v1">
+          <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/karthikkovi?trk=profile-badge"></a>
+        </div>
+
       </section>
     </>
   )
