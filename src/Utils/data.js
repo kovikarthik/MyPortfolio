@@ -125,7 +125,7 @@ export const experience = [
     {
       company: 'Infobell IT Solutions Pvt Ltd',
       role: 'Full Stack Developer',
-      period: 'Jul 2023 - Jan 2025',
+      period: 'Jan 2023 - Jan 2025',
       location: 'Bengaluru, India',
       current: false,
       achievements: [
