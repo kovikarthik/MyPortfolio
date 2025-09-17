@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icons/icon-48x48.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
 
@@ -12,7 +16,7 @@
       name="description"
       content="Portfolio of Karthik Kovi, Full Stack Developer and MS CS student at CSULB. Showcasing React Native apps, SaaS platforms, and cloud-powered web solutions built with MERN, MEAN, and AWS."
     />
-    <link rel="canonical" href="https://karthik-kovi.web.app/" />
+    <link rel="canonical" href="https://karthikkovi.com/" />
 
     <!-- ✅ Open Graph (WhatsApp, LinkedIn, Facebook) -->
     <meta property="og:title" content="Karthik Kovi | Full Stack & Mobile App Developer" />
@@ -21,7 +25,7 @@
       content="Explore projects and achievements of Karthik Kovi — React Native apps, SaaS platforms, MERN/MEAN stacks, and AWS cloud solutions."
     />
     <meta property="og:image" content="%PUBLIC_URL%/profile.png" />
-    <meta property="og:url" content="https://karthik-kovi.web.app/" />
+    <meta property="og:url" content="https://karthikkovi.com/" />
     <meta property="og:type" content="website" />
 
     <!-- ✅ Twitter Card -->
@@ -33,8 +37,135 @@
     />
     <meta name="twitter:image" content="%PUBLIC_URL%/profile.png" />
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-167x167.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180x180.png" />
+
+    <!-- Manifest -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- ✅ Structured Data: Person + Website + Projects -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://karthikkovi.com/#karthik",
+          "name": "Karthik Kovi",
+          "givenName": "Karthik",
+          "familyName": "Kovi",
+          "jobTitle": "Full Stack & Mobile App Developer",
+          "email": "mailto:karthikkovik@gmail.com",
+          "telephone": "+1-562-284-0297",
+          "url": "https://karthikkovi.com/",
+          "image": "https://karthikkovi.com/profile.png",
+          "sameAs": [
+            "https://www.linkedin.com/in/karthikkovi",
+            "https://github.com/kovikarthik"
+          ],
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Associated Students, Inc. – California State University, Long Beach",
+            "url": "https://www.asicsulb.org/"
+          },
+          "alumniOf": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "California State University, Long Beach",
+              "sameAs": "https://www.csulb.edu/"
+            },
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "JNTU Anantapur (Madanapalle Institute of Technology and Science)",
+              "sameAs": "https://www.jntua.ac.in/"
+            }
+          ],
+          "knowsAbout": [
+            "React Native", "React", "Angular", "Next.js",
+            "Node.js", "Express.js", "NestJS",
+            "GraphQL", "MongoDB", "PostgreSQL", "Redis",
+            "AWS (EC2, S3, Lambda, LightSail)", "Docker",
+            "CI/CD", "GitOps", "WCAG Accessibility"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Apt #126, 2001 N Beverly Plaza",
+            "addressLocality": "Long Beach",
+            "addressRegion": "CA",
+            "postalCode": "90815",
+            "addressCountry": "US"
+          },
+          "award": [
+            "ISTE AP Best Student Innovator Award (Gold Medal)",
+            "Smart India Hackathon National Finalist"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://karthikkovi.com/#website",
+          "url": "https://karthikkovi.com/",
+          "name": "Karthik Kovi | Full Stack & Mobile App Developer Portfolio",
+          "publisher": { "@id": "https://karthikkovi.com/#karthik" },
+          "inLanguage": "en-US",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://karthikkovi.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://arikya.in/#project",
+          "name": "ARIKYA – Training & Placement Platform",
+          "applicationCategory": "WebApplication",
+          "operatingSystem": "Web, Android, iOS",
+          "url": "https://arikya.in/",
+          "creator": { "@id": "https://karthikkovi.com/#karthik" },
+          "description": "Full-stack SaaS platform for training & placements, developed with Angular, React Native, and Node.js. Deployed on AWS with CI/CD pipelines, SEO optimizations, and compiler for coding assessments. Recognized with the ISTE Best Student Innovator Award.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://nativenest.in/#project",
+          "name": "NativeNest Grocery Platform",
+          "applicationCategory": "MobileApplication",
+          "operatingSystem": "iOS, Android, Web",
+          "url": "https://nativenest.in/",
+          "creator": { "@id": "https://karthikkovi.com/#karthik" },
+          "description": "E-commerce grocery platform serving 30,000+ users. Built with React Native, React, GraphQL, Node.js, MongoDB; CI/CD on AWS.",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://origemindia.com/#project",
+          "name": "Origem Jewellery Shopping Application",
+          "applicationCategory": "WebApplication",
+          "url": "https://origemindia.com/",
+          "creator": { "@id": "https://karthikkovi.com/#karthik" },
+          "description": "Online jewellery storefront with Next.js, Tailwind, Node.js middleware with Redis, and Magento; Razorpay payments and SEO optimizations.",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "MobileApplication",
+          "@id": "https://www.asicsulb.org/corporate/discover/futureu#project",
+          "name": "FutureU Mobile App",
+          "applicationCategory": "MobileApplication",
+          "operatingSystem": "iOS, Android",
+          "url": "https://www.asicsulb.org/corporate/discover/futureu",
+          "creator": { "@id": "https://karthikkovi.com/#karthik" },
+          "description": "Campus app improving accessibility and engagement for 12,000+ monthly users. Built with React Native, React, Node.js, and Tailwind.",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+      ]
+    }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
