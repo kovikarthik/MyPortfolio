@@ -3,9 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <!-- Favicons -->
+     <link rel="icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/icons/icon-48x48.png" />
+    <link rel="shortcut icon" href="/icons/icon-32x32.png" type="image/png" />
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -24,18 +27,23 @@
       property="og:description"
       content="Explore projects and achievements of Karthik Kovi — React Native apps, SaaS platforms, MERN/MEAN stacks, and AWS cloud solutions."
     />
-    <meta property="og:image" content="%PUBLIC_URL%/profile.png" />
+    <meta property="og:image" content="https://karthikkovi.com/profile.png" />
+    <meta property="og:image:alt" content="Karthik Kovi headshot" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
     <meta property="og:url" content="https://karthikkovi.com/" />
     <meta property="og:type" content="website" />
 
     <!-- ✅ Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Karthik Kovi | Full Stack & Mobile App Developer" />
+    <meta name="twitter:image:alt" content="Karthik Kovi headshot" />
     <meta
       name="twitter:description"
       content="React Native, SaaS, and cloud-native solutions portfolio. Discover Karthik Kovi’s work in full-stack engineering and scalable app development."
     />
-    <meta name="twitter:image" content="%PUBLIC_URL%/profile.png" />
+    <meta name="twitter:image" content="https://karthikkovi.com/profile.png" />
 
     <!-- Apple Touch Icons -->
     <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120x120.png" />
@@ -104,11 +112,24 @@
           ]
         },
         {
+          "@type": "Organization",
+          "@id": "https://karthikkovi.com/#org",
+          "name": "Karthik Kovi Portfolio",
+          "url": "https://karthikkovi.com/",
+          "logo": "https://karthikkovi.com/icons/icon-512x512.png",
+          "sameAs": [
+            "https://www.linkedin.com/in/karthikkovi",
+            "https://github.com/kovikarthik"
+          ]
+        },
+        {
           "@type": "WebSite",
           "@id": "https://karthikkovi.com/#website",
           "url": "https://karthikkovi.com/",
           "name": "Karthik Kovi | Full Stack & Mobile App Developer Portfolio",
-          "publisher": { "@id": "https://karthikkovi.com/#karthik" },
+          "publisher": { 
+            "@id": "https://karthikkovi.com/#org" 
+          },
           "inLanguage": "en-US",
           "potentialAction": {
             "@type": "SearchAction",
