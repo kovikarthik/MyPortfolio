@@ -9,9 +9,9 @@ function App() {
   return (
     <div className="App">
         <ToastContainer />
-        <Portfolio />
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Portfolio />} />
             <Route path="/blogs/prompt-tailor-resume" element={<PromptTailorResume />} />
           </Routes>
         </BrowserRouter>
