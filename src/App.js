@@ -1,4 +1,6 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PromptTailorResume from './Blogs/PromptTailorResume';
 import Portfolio from './Portfolio';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,6 +10,11 @@ function App() {
     <div className="App">
         <ToastContainer />
         <Portfolio />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/blogs/prompt-tailor-resume" element={<PromptTailorResume />} />
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }
