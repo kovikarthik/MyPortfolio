@@ -35,6 +35,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Portfolio />} />
             <Route path="/blogs/prompt-tailor-resume" element={<PromptTailorResume />} />
+            <Route path="*" element={<Portfolio />} />
           </Routes>
         </BrowserRouter>
     </div>
