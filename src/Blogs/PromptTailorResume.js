@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const PROMPT = `I want to tailor my resume for a specific job. Here is the job description:
-[Insert job description or link here]
+[Insert job description]
 
 And here is my current resume:
 [Attached]
@@ -26,12 +27,15 @@ Keep the resume professional, easy to scan, and job-ready.
 Final deliverable: Single Page LaTeX code of optimized resume that truthfully reflects my background and is tailored to this specific job.`
 
 export default function PromptTailorResume() {
-  const [copied, setCopied] = useState(false);
+  // const [copied, setCopied] = useState(false);
 
   const copy = async () => {
     await navigator.clipboard.writeText(PROMPT);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
+    toast.success(
+        <span style={{ textAlign:'center' }}>
+            Copied
+        </span>
+    );
   };
 
   return (
@@ -41,14 +45,14 @@ export default function PromptTailorResume() {
         Free to use. Please don’t fabricate experience—highlight what’s true and relevant.
       </p>
 
-      <div className="mt-6 rounded-2xl border border-gray-200 bg-white/60 shadow-sm backdrop-blur">
+      <div className="mt-6 rounded-2xl border border-cyan-400/50 bg-white/10 shadow-sm backdrop-blur">
         <div className="flex items-center justify-between border-b px-4 py-3">
           <span className="text-sm font-medium">Copy-ready prompt</span>
           <button
             onClick={copy}
-            className="rounded-xl border px-3 py-1.5 text-sm hover:bg-gray-50 active:scale-[0.99]"
+            className="rounded-xl border px-3 py-1.5 text-sm transition-all duration-200 hover:border-cyan-400/50 active:scale-75 hover:scale-105 disabled:opacity-90 disabled:cursor-not-allowed"
           >
-            {copied ? "Copied ✅" : "Copy"}
+            {"Copy"}
           </button>
         </div>
         <pre className="max-h-[70vh] overflow-auto p-4 text-sm leading-6 whitespace-pre-wrap">

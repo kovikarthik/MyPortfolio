@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import ContactMe from './ContactMe/ContactMe';
-import Footer from './Footer/Footer'
+import Footer from './Footer/Footer';
 import Projects from './Projects/Projects'
 import OnAppLoading from './OnAppLoading/OnAppLoading'
 import AwardsAndCertificates from './AwardsAndCertificates/AwardsAndCertificates'
