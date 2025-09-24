@@ -1,41 +1,45 @@
-import { useState } from "react";
 import { toast } from "react-toastify";
 
-const PROMPT = `I want to tailor my resume for a specific job. Here is the job description:
+const PROMPT = `
+I want to create an ATS-friendly tailored resume for a specific job. Here is the job description:
 [Insert job description]
 
 And here is my current resume:
 [Attached]
 
-Please optimize my resume for this job by doing the following:
+Please optimize my resume for this job by following these rules:
 
-Do not fabricate anything — do not invent or exaggerate skills, tools, or experience I don’t have. Use only what’s already in my resume.
+1. Accuracy Only
+   - Do not fabricate or exaggerate anything. Use only what already exists in my resume.
 
-Identify the top 5 responsibilities, skills, or values the job is emphasizing, and ensure my professional summary reflects that I offer those exact things.
+2. Job Alignment
+   - Identify the top 5 responsibilities, skills, or values emphasized in the job description.
+   - Rewrite my Professional Summary to highlight that I meet those requirements.
+   - Create a dedicated "Skills" section that uses the exact keywords from the job description where they truthfully apply.
 
-Ensure the work experience section is aligned with the job description:
-- Emphasize relevant experience
-- Use clear, measurable achievements
-- Match my real work to the job's language and structure (e.g., project lifecycle, tools used, stakeholder impact)
+3. Work Experience Optimization
+   - Reorder and emphasize the most relevant experience for this role.
+   - Rewrite bullet points with measurable, impact-driven outcomes (e.g., "Improved X by Y%", "Delivered Z ahead of schedule").
+   - Align language with the JD (e.g., Agile, project lifecycle, tools, stakeholders).
 
-Optimize for ATS (Applicant Tracking Systems) — clean formatting, role-relevant keywords, clear section headers.
+4. ATS Optimization
+   - Use standard, ATS-readable section headers only: "Professional Summary," "Skills," "Work Experience," "Education," "Certifications."
+   - Keep formatting simple, text-based, and keyword-rich.
+   - Integrate JD keywords naturally throughout, without keyword stuffing.
 
-Highlight any certifications, tools, or methodologies listed in the job that I already possess (e.g., PMP, Jira, Agile, Salesforce).
+5. Certifications & Tools
+   - Highlight certifications, technical tools, and methodologies from the JD that I already possess in a dedicated section ("Certifications" or "Technical Skills").
 
-Keep the resume professional, easy to scan, and job-ready.
-
-Final deliverable: Single Page LaTeX code of optimized resume that truthfully reflects my background and is tailored to this specific job.`
+6. Deliverable
+   - Output as a single-page LaTeX resume.
+   - Ensure clean, professional design with no special formatting that breaks ATS parsing.
+   - Final result should be tailored, concise, and immediately job-ready.
+`;
 
 export default function PromptTailorResume() {
-  // const [copied, setCopied] = useState(false);
-
   const copy = async () => {
     await navigator.clipboard.writeText(PROMPT);
-    toast.success(
-        <span style={{ textAlign:'center' }}>
-            Copied
-        </span>
-    );
+    toast.success("Prompt copied to clipboard!");
   };
 
   return (
@@ -50,18 +54,19 @@ export default function PromptTailorResume() {
           <span className="text-sm font-medium">Copy-ready prompt</span>
           <button
             onClick={copy}
+            aria-label="Copy prompt"
             className="rounded-xl border px-3 py-1.5 text-sm transition-all duration-200 hover:border-cyan-400/50 active:scale-75 hover:scale-105 disabled:opacity-90 disabled:cursor-not-allowed"
           >
-            {"Copy"}
+            Copy
           </button>
         </div>
         <pre className="max-h-[70vh] overflow-auto p-4 text-sm leading-6 whitespace-pre-wrap">
-{PROMPT}
+          {String(PROMPT)}
         </pre>
       </div>
 
       <div className="mt-8 text-xs text-gray-500">
-        Tip: Paste the JD and your resume, then only **spotlight the specific skills you already have** that align with the role.
+        Tip: Paste the JD and your resume, then only spotlight the specific skills you already have that align with the role.
       </div>
     </main>
   );
