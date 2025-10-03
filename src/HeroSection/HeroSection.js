@@ -95,7 +95,7 @@ export default function HeroSection() {
             ))}
           </div>
           <div className='flex justify-center pt-5 opacity-0 animate-fade-in-up' style={{animationDelay: '1.5s', animationFillMode: 'forwards'}}>
-            <a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=karthikkovi" target="_blank">Follow on LinkedIn</a>
+            <a class="libutton" href="https://www.linkedin.com/in/karthikkovi/" target="_blank">Follow on LinkedIn</a>
           </div>
         </div>
 
