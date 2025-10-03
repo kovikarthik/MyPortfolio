@@ -1,7 +1,6 @@
 import { toast } from "react-toastify";
 
-const PROMPT = `
-I want to create an ATS-friendly tailored resume for a specific job. Here is the job description:
+const PROMPT = `I want to create an ATS-friendly tailored resume for a specific job. Here is the job description:
 [Insert job description]
 
 And here is my current resume:

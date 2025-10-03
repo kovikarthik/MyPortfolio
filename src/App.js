@@ -25,7 +25,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-x-hidden">
+    <div className="font-sans min-h-screen bg-black text-white relative overflow-x-hidden">
       {/* Enhanced Three.js Background */}
       <canvas ref={canvasRef} className="fixed inset-0 -z-10" />
       <ToastContainer 

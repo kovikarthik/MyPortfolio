@@ -77,7 +77,7 @@ export default function HeroSection() {
 
           <div className="flex justify-center space-x-6 opacity-0 animate-fade-in-up" style={{animationDelay: '1.5s', animationFillMode: 'forwards'}}>
             {[
-              { icon: 'bxl-linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/karthikkovi/', color: 'hover:text-blue-400' },
+              // { icon: 'bxl-linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/karthikkovi/', color: 'hover:text-blue-400' },
               { icon: 'bxl-github', label: 'GitHub', href: 'https://github.com/kovikarthik', color: 'hover:text-gray-300' },
               { icon: 'bx-envelope', label: 'Email', href: 'mailto:karthikkovik@gmail.com', color: 'hover:text-red-400' },
               { icon: 'bx-phone', label: 'Phone', href: 'tel:+15622840297', color: 'hover:text-green-400' }
@@ -93,6 +93,9 @@ export default function HeroSection() {
                 <i className={`bx ${social.icon} text-2xl transition-all duration-300`} />
               </a>
             ))}
+          </div>
+          <div className='flex justify-center pt-5 opacity-0 animate-fade-in-up' style={{animationDelay: '1.5s', animationFillMode: 'forwards'}}>
+            <a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=karthikkovi" target="_blank">Follow on LinkedIn</a>
           </div>
         </div>
 
