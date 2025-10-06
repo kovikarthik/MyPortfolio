@@ -1,6 +1,12 @@
 import NativeNest_Event from "../Assets/NativeNest_Event.jpeg";
 import FutureU_App from "../Assets/FutureU_App.png";
 import Origem from "../Assets/Origem.png";
+import Bookingbee from "../Assets/Bookingbee.png";
+import JobTracker from "../Assets/JobTracker.png";
+import Arikya from "../Assets/Arikya.png";
+import HeedSites from "../Assets/HeedSites.png";
+import InstantBackend from "../Assets/InstantBackend.png";
+
 
 export const skills = [
     { name: 'React.js', level: 95, category: 'Frontend', icon: 'bxl-react', color: 'from-cyan-400 to-blue-500' },
@@ -66,6 +72,86 @@ export const projects = [
       featured: true
     },
     {
+      id: 6,
+      title: 'Booking Bee - AI salon appointment scheduling software',
+      description: 'Full-stack AI salon booking system with Angular, NestJS, and Dasha AI integration.',
+      longDescription: 'Revolutionary appointment booking platform enabling real-time scheduling via mobile calls, live chat integration, secure payment gateway, and AI-powered customer interactions.',
+      tech: ['Angular', 'NestJS', 'MongoDB', 'Dasha AI', 'Payment Gateway'],
+      stats: { Bookings: '10K+', Automation: '80%', Satisfaction: '95%' },
+      image: Bookingbee,
+      categories: ['AI/Automation'],
+      year: '2022',
+      navigationLink : 'https://bookingbee.ai/',
+      featured: true
+    },
+        { 
+        id: 7, 
+        title: 'Heedsites Website', 
+        description: 'Corporate website for Heedsites showcasing services, products, and digital solutions.', 
+        longDescription: 'Developed a responsive and interactive website for Heedsites with focus on UI/UX, performance, and SEO optimization. Features include service pages, product showcases, contact forms, and blog integration to attract global clients.', 
+        tech: ['React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'SEO', 'Vercel'], 
+        stats: { 
+            Speed: '40%↑', 
+            Engagement: 'High', 
+            Uptime: '99.9%' 
+        }, 
+        image: HeedSites, 
+        categories: ['Web App', 'Corporate Website'], 
+        navigationLink: 'https://heedsites.com/', 
+        year: '2025', 
+        featured: false 
+    }, 
+        { 
+        id: 10, 
+        title: 'Job Tracker Application', 
+        description: 'Full-stack application to track job applications, interviews, and follow-ups for job seekers.', 
+        longDescription: 'Built a responsive web app to help job seekers manage applications, set reminders for interviews, track application status, and get analytics on progress. Features include notifications, status filters, and dashboard visualizations.', 
+        tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT Auth', 'Tailwind CSS', 'REST APIs', 'CI/CD'], 
+        stats: { 
+            Applications: '5K+', 
+          // Interviews: '1K+', 
+        Users: '200', 
+        // Users: '2K+', 
+        Automation: '85%' }, 
+        image: JobTracker, 
+        categories: ['Web App', 'Productivity', 'Job Search'], 
+        navigationLink: 'https://jobtracker.karthikkovi.com/', 
+        year: '2025', 
+        featured: true 
+    }, 
+    { 
+        id: 9, 
+        title: 'Arikya - Training & Placement Platform', 
+        description: 'Comprehensive training and placement platform for students and institutions, built with full-stack technologies.', 
+        longDescription: 'Developed a platform to automate training, skill assessments, and placement processes for students and colleges. Features include online tests, placement tracking, AI-based recommendations, and seamless admin dashboards for institutions.', 
+        tech: ['Angular', 'Node.js', 'Express.js', 'MongoDB', 'GraphQL', 'JWT Auth', 'CI/CD', 'Responsive Design'], 
+        stats: { 
+            Students: '10K+', 
+        Automation: '90%', 
+        Placements: '500+ successful' }, 
+        image: Arikya, 
+        categories: ['Web App', 'Education', 'Automation'], 
+        navigationLink: 'https://arikya.in/', 
+        year: '2025', 
+        featured: false 
+    }, 
+    { 
+        id: 8, 
+        title: 'Instant Backend', 
+        description: 'Automated backend generation platform for developers to create APIs instantly.', 
+        longDescription: 'Created a platform allowing developers to generate REST and GraphQL APIs automatically by defining collections and fields. Supports CRUD operations, authentication, and seamless deployment, drastically reducing backend development time.', 
+        tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'GraphQL', 'REST APIs', 'JWT Auth', 'CI/CD'], 
+        stats: { 
+            Speed: '80%↑ faster dev', 
+        Automation: '100%', 
+        Users: '500+' }, 
+        image: InstantBackend, 
+        categories: ['Web App', 'Developer Tools', 'Automation'], 
+        navigationLink: 'https://instantbackend.heedsites.com/?_gl=1*1tp9gmz*_ga*MTA5MTE2MTg4MS4xNzQ4ODgxMTAz*_ga_TQYM7JJY0N*czE3NTk3Mjg5MTIkbzMkZzEkdDE3NTk3MjkyNTAkajYwJGwwJGgw', 
+        year: '2025', 
+        featured: false 
+    }, 
+    {
       id: 4,
       title: 'MirrorMate Screen Casting',
       description: 'Windows desktop application for wireless screen sharing using C# and Miracast technology.',
@@ -91,19 +177,7 @@ export const projects = [
       navigationLink : '',
       featured: false
     },
-    {
-      id: 6,
-      title: 'Booking Bee - AI Appointment Manager',
-      description: 'Full-stack salon booking system with Angular, NestJS, and Dasha AI integration.',
-      longDescription: 'Revolutionary appointment booking platform enabling real-time scheduling via mobile calls, live chat integration, secure payment gateway, and AI-powered customer interactions.',
-      tech: ['Angular', 'NestJS', 'MongoDB', 'Dasha AI', 'Payment Gateway'],
-      stats: { Bookings: '10K+', Automation: '80%', Satisfaction: '95%' },
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop',
-      categories: ['AI/Automation'],
-      year: '2022',
-      navigationLink : 'https://bookingbee.ai/',
-      featured: false
-    }
+    
   ];
 
 export const experience = [
