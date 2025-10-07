@@ -38,6 +38,10 @@
     <meta property="og:url" content="https://karthikkovi.com/" />
     <meta property="og:type" content="website" />
 
+    <!-- ✅ Explicit Site Name Metadata for Google -->
+    <meta name="application-name" content="Karthik Kovi" />
+    <meta property="og:site_name" content="Karthik Kovi" />
+
     <!-- ✅ Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Karthik Kovi | Full Stack & Mobile App Developer" />
@@ -57,6 +61,12 @@
     <!-- Manifest -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
+    <!-- ✅ Extra SEO Keywords -->
+  <meta
+    name="keywords"
+    content="Karthik Kovi, karthikkovi, Karthik Kovi portfolio, Full Stack Developer, React Developer, React Native Developer, JavaScript Developer, CSULB student, Node.js, AWS, Web Developer, Mobile App Developer"
+  />
+
     <!-- ✅ Structured Data: Person + Website + Projects -->
     <script type="application/ld+json">
     {
@@ -64,8 +74,9 @@
       "@graph": [
         {
           "@type": "Person",
-          "@id": "https://karthikkovi.com/#karthik",
+          "@id": "https://karthikkovi.com/#identity",
           "name": "Karthik Kovi",
+          "alternateName": "karthikkovi",
           "givenName": "Karthik",
           "familyName": "Kovi",
           "jobTitle": "Full Stack & Mobile App Developer",
@@ -81,6 +92,11 @@
             "@type": "Organization",
             "name": "Associated Students, Inc. - California State University, Long Beach",
             "url": "https://www.asicsulb.org/"
+          },
+          "affiliation": {
+            "@type": "CollegeOrUniversity",
+            "name": "California State University, Long Beach",
+            "url": "https://www.csulb.edu/"
           },
           "alumniOf": [
             {
@@ -130,6 +146,7 @@
           "@id": "https://karthikkovi.com/#website",
           "url": "https://karthikkovi.com/",
           "name": "Karthik Kovi | Full Stack & Mobile App Developer Portfolio",
+          "alternateName": "Karthik Kovi Portfolio",
           "publisher": { 
             "@id": "https://karthikkovi.com/#org" 
           },
