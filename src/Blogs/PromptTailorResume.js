@@ -32,6 +32,7 @@ Please optimize my resume for this job by following these rules:
 6. Deliverable
    - Output as a single-page LaTeX resume.
    - Ensure clean, professional design with no special formatting that breaks ATS parsing.
+   - Perfectly fill the first page — no white space at the bottom, and no spillover to a second page. Maintain my current LaTeX structure exactly as is.
    - Final result should be tailored, concise, and immediately job-ready.
 `;
 
