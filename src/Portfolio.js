@@ -23,7 +23,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     // Loading animation
-    setTimeout(() => setIsLoading(false), 2000);
+    setTimeout(() => setIsLoading(false), 1000);
 
     // Scroll tracking with intersection observer
     const sections = document.querySelectorAll('section[id]');
