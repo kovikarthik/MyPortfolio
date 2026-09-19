@@ -34,7 +34,7 @@ export default function Footer() {
         </div>
 
         <div className="text-[11px] font-mono text-gray-500 pt-4 border-t border-white/5">
-          © {new Date().getFullYear()} Karthik Kovi. Built with React, Three.js & Framer Motion.
+          © {new Date().getFullYear()} Karthik Kovi. All rights reserved.
         </div>
       </div>
     </footer>
