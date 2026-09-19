@@ -1,84 +1,116 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function NavBar() {
-    const [activeSection, setActiveSection] = useState('home');
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    useEffect(()=>{
-          // Scroll tracking with intersection observer
-      const sections = document.querySelectorAll('section[id]');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      }, { threshold: 0.5 });
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
 
-      sections.forEach(section => observer.observe(section));
+      const sections = Array.from(document.querySelectorAll('section[id]'));
+      const triggerPoint = window.scrollY + window.innerHeight * 0.35;
 
-      return () => {
-        observer.disconnect();
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section.offsetTop <= triggerPoint) {
+          setActiveSection(section.id);
+          break;
         }
-    },[])
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const navItems = [
+    { id: 'home', label: 'HOME', code: '00' },
+    { id: 'about', label: 'ABOUT', code: '01' },
+    { id: 'experience', label: 'EXPERIENCE', code: '02' },
+    { id: 'skills', label: 'SKILLS', code: '03' },
+    { id: 'projects', label: 'WORK', code: '04' },
+    { id: 'contact', label: 'CONTACT', code: '05' },
+  ];
 
   return (
-    <>  
-    <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-2xl border-b border-white/10 shadow-2xl">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div className="text-4xl font-black tracking-wider">
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent hover:scale-110 transition-transform cursor-pointer">
-                KK
-              </span>
-            </div>
-            
-            <div className="hidden lg:flex items-center space-x-8">
-              {[
-                { id: 'home', label: 'Home', icon: 'bx-home-alt' },
-                { id: 'about', label: 'About', icon: 'bx-user' },
-                { id: 'experience', label: 'Experience', icon: 'bx-briefcase' },
-                { id: 'skills', label: 'Skills', icon: 'bx-code-alt' },
-                { id: 'projects', label: 'Projects', icon: 'bx-folder-open' },
-                { id: 'contact', label: 'Contact', icon: 'bx-message-dots' }
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setActiveSection(item.id);
-                    document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className={`group flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-500 ${
-                    activeSection === item.id 
-                      ? 'bg-gradient-to-r from-cyan-500/30 to-blue-500/30 text-cyan-300 border border-cyan-400/50 shadow-lg shadow-cyan-500/25 scale-105' 
-                      : 'hover:text-cyan-400 hover:bg-white/10 hover:scale-105 hover:shadow-lg'
-                  }`}
-                >
-                  <i className={`bx ${item.icon} text-xl group-hover:rotate-12 transition-transform`} />
-                  <span className="font-semibold tracking-wide">{item.label}</span>
-                </button>
-              ))}
-            </div>
+    <header
+      className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+        scrolled
+          ? 'bg-[#0B0F19]/80 backdrop-blur-xl border-b border-indigo-500/20 py-4 shadow-lg shadow-indigo-500/5'
+          : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
+        {/* Logo */}
+        <button
+          onClick={() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}
+          className="group flex items-center space-x-2 text-left"
+        >
+          <span className="font-black text-3xl tracking-wider bg-gradient-to-r from-white via-indigo-300 to-cyan-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+            KK
+          </span>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" />
+        </button>
 
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden w-14 h-14 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-2xl border border-white/20 hover:border-cyan-400/50 hover:bg-cyan-400/20 transition-all duration-300"
-            >
-              <i className={`bx ${isMenuOpen ? 'bx-x' : 'bx-menu'} text-2xl transition-transform duration-300 ${isMenuOpen ? 'rotate-180': '' }`} />
-            </button>
-          </div>
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-8">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setActiveSection(item.id);
+                  document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="relative py-2 group text-[12px] font-semibold tracking-[0.2em] uppercase font-montserrat transition-colors"
+              >
+                <span className={isActive ? 'text-cyan-400' : 'text-gray-300 group-hover:text-white'}>
+                  <span className="text-indigo-400/60 mr-1 font-mono">{item.code}.</span>
+                  {item.label}
+                </span>
 
-          {/* Mobile menu */}
-          {isMenuOpen && (
-            <div className="lg:hidden mt-6 p-6 bg-black/80 rounded-2xl backdrop-blur-2xl border border-white/20 shadow-2xl">
-              {[
-                { id: 'home', label: 'Home', icon: 'bx-home-alt' },
-                { id: 'about', label: 'About', icon: 'bx-user' },
-                { id: 'experience', label: 'Experience', icon: 'bx-briefcase' },
-                { id: 'skills', label: 'Skills', icon: 'bx-code-alt' },
-                { id: 'projects', label: 'Projects', icon: 'bx-folder-open' },
-                { id: 'contact', label: 'Contact', icon: 'bx-message-dots' }
-              ].map((item) => (
+                {/* Electric Indigo-Cyan Active Indicator */}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNavIndicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-500 to-cyan-400 shadow-[0_0_10px_rgba(99,102,241,0.8)]"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="lg:hidden p-2.5 rounded-full border border-indigo-500/30 bg-[#111827]/60 text-cyan-400 hover:border-cyan-400 transition-all shadow-md"
+          aria-label="Toggle Navigation"
+        >
+          <i className={`bx ${isMenuOpen ? 'bx-x' : 'bx-menu'} text-2xl text-cyan-400`} />
+        </button>
+      </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-[#0B0F19]/95 backdrop-blur-2xl border-b border-indigo-500/20 px-6 py-6"
+          >
+            <div className="flex flex-col space-y-4">
+              {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => {
@@ -86,16 +118,18 @@ export default function NavBar() {
                     setIsMenuOpen(false);
                     document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="flex items-center space-x-4 w-full p-4 rounded-xl hover:bg-white/10 hover:scale-105 transition-all duration-300 group"
+                  className={`flex items-center justify-between text-left py-2.5 font-montserrat text-sm tracking-[0.2em] border-b border-white/5 ${
+                    activeSection === item.id ? 'text-cyan-400 font-semibold' : 'text-gray-300'
+                  }`}
                 >
-                  <i className={`bx ${item.icon} text-2xl text-cyan-400 group-hover:rotate-12 transition-transform`} />
-                  <span className="text-lg font-medium">{item.label}</span>
+                  <span>{item.label}</span>
+                  <span className="text-xs text-indigo-400/60 font-mono">{item.code}</span>
                 </button>
               ))}
             </div>
-          )}
-        </div>
-      </nav>
-    </>
-  )
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
 }

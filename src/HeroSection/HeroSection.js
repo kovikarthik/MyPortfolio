@@ -1,114 +1,166 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 25, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 1.1,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+const rotatingTitles = [
+  'Full Stack Architect',
+  'Mobile App Developer',
+  'AWS Cloud Engineer',
+  'AI / ML Developer',
+];
 
 export default function HeroSection() {
+  const [titleIdx, setTitleIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTitleIdx((prev) => (prev + 1) % rotatingTitles.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <>
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* Floating elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-60"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
+    <section
+      id="home"
+      className="relative w-full min-h-screen text-white font-sans overflow-hidden flex items-center pt-24 pb-16 px-6 sm:px-12 lg:px-20 selection:bg-indigo-500 selection:text-white"
+    >
+      {/* Ambient Lighting & Glowing Orbs */}
+      <motion.div
+        animate={{ scale: [1, 1.2, 1], opacity: [0.25, 0.4, 0.25] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-1/4 left-1/4 w-[36rem] h-[36rem] bg-indigo-600/20 rounded-full blur-[170px] pointer-events-none"
+      />
+      <motion.div
+        animate={{ scale: [1.2, 1, 1.2], opacity: [0.15, 0.3, 0.15] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-1/4 right-1/4 w-[32rem] h-[32rem] bg-sky-500/15 rounded-full blur-[180px] pointer-events-none"
+      />
 
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <div className="mb-12 mt-32 sm:mt-15 md:mt-10 xl:mt-5">
-            <div className="text-xl text-cyan-400 mb-6 tracking-[0.5em] uppercase font-light opacity-0 animate-fade-in-up" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
-               Full Stack Developer
-            </div>
-            
-            <h1 className="text-5xl md:text-5xl lg:text-7xl font-black mb-8 leading-none opacity-0 animate-fade-in-up" style={{animationDelay: '0.6s', animationFillMode: 'forwards'}}>
-              <span className="bg-gradient-to-r from-white via-blue-200 to-blue-300 bg-clip-text text-transparent block">
-                KARTHIK
-              </span>
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent block mt-4">
-                KOVI
-              </span>
-            </h1>
-            
-            <div className="max-w-5xl mx-auto mb-12 opacity-0 animate-fade-in-up" style={{animationDelay: '0.9s', animationFillMode: 'forwards'}}>
-              <p className="text-2xl md:text-3xl text-gray-300 leading-relaxed mb-6">
-                Architecting the future of digital experiences through
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-lg">
-                {['Technology', 'Innovation', 'Expertise', 'Integration'].map((tech, index) => (
-                  <span key={tech} className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full border border-cyan-400/30 text-cyan-300 font-medium hover:scale-110 transition-transform duration-300 cursor-default">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+      <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col justify-center items-center text-center">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col items-center max-w-5xl"
+        >
+          {/* Eyebrow Header */}
+          <motion.div variants={fadeUpVariants} className="flex items-center space-x-3 mb-6">
+            <span className="text-[11px] font-semibold tracking-[0.35em] uppercase text-indigo-400 font-montserrat">
+              00 / INTRO
+            </span>
+            <div className="w-16 h-[1px] bg-gradient-to-r from-indigo-500 via-sky-400 to-transparent" />
+          </motion.div>
 
-          <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20 opacity-0 animate-fade-in-up" style={{animationDelay: '1.2s', animationFillMode: 'forwards'}}>
-            <button 
+          {/* Dynamic Rotating Title Badge */}
+          <motion.div variants={fadeUpVariants} className="mb-6 h-10 flex items-center justify-center">
+            <span className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-indigo-500/15 via-sky-500/10 to-emerald-500/10 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm font-montserrat font-bold tracking-[0.2em] uppercase backdrop-blur-xl shadow-[0_0_20px_rgba(99,102,241,0.2)]">
+              {rotatingTitles[titleIdx]}
+            </span>
+          </motion.div>
+
+          {/* Cinematic Main Title */}
+          <motion.h1
+            variants={fadeUpVariants}
+            className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tight uppercase leading-[0.88] mb-8 select-none"
+          >
+            <span className="bg-gradient-to-r from-white via-slate-100 to-indigo-200 bg-clip-text text-transparent block">
+              KARTHIK
+            </span>
+            <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent block mt-2 drop-shadow-[0_0_35px_rgba(99,102,241,0.3)]">
+              KOVI
+            </span>
+          </motion.h1>
+
+          {/* Description Paragraph */}
+          <motion.p
+            variants={fadeUpVariants}
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 leading-relaxed font-light max-w-3xl mb-10 font-sans"
+          >
+            Architecting the future of digital experiences through scalable cloud platforms, responsive mobile apps, and high-concurrency systems serving{' '}
+            <span className="text-sky-400 font-medium">30,000+ active users</span>.
+          </motion.p>
+
+          {/* Tech Tag Pills */}
+          <motion.div variants={fadeUpVariants} className="flex flex-wrap justify-center gap-3 mb-12">
+            {['React Native', 'React.js', 'Node.js', 'AWS', 'GraphQL', 'TypeScript', 'MongoDB', 'Python'].map((tech) => (
+              <span
+                key={tech}
+                className="px-4 py-1.5 rounded-full bg-white/5 border border-indigo-500/30 text-indigo-200 text-xs font-montserrat tracking-wider hover:border-sky-400 hover:scale-105 hover:bg-sky-400/10 hover:text-sky-300 transition-all duration-300 backdrop-blur-md"
+              >
+                {tech}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div variants={fadeUpVariants} className="flex flex-col sm:flex-row gap-5 mb-16">
+            <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full font-bold text-xl overflow-hidden hover:scale-110 hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-500"
+              className="group relative px-9 py-4 rounded-full bg-gradient-to-r from-indigo-600 via-indigo-500 to-sky-500 text-white font-montserrat font-bold text-xs tracking-[0.2em] uppercase overflow-hidden hover:scale-105 transition-all duration-300 shadow-xl shadow-indigo-500/30"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-              <span className="relative flex items-center justify-center space-x-3">
-                <i className="bx bx-rocket text-2xl" />
-                <span>Explore My Work</span>
-                <i className="bx bx-right-arrow-alt text-2xl group-hover:translate-x-2 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-emerald-500 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              <span className="relative z-10 flex items-center space-x-2">
+                <span>EXPLORE MY WORK</span>
+                <i className="bx bx-right-arrow-alt text-lg group-hover:translate-x-1 transition-transform" />
               </span>
             </button>
-            
-            <button 
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group relative px-10 py-5 bg-white/5 border-2 border-cyan-400/50 rounded-full font-bold text-xl backdrop-blur-2xl overflow-hidden hover:bg-cyan-400/20 hover:border-cyan-300 hover:shadow-2xl hover:shadow-cyan-400/50 transition-all duration-500"
-            >
-              <span className="relative flex items-center justify-center space-x-3">
-                <i className="bx bx-message-dots text-2xl group-hover:scale-125 transition-transform" />
-                <span>Let's Connect</span>
-                <i className="bx bx-paper-plane text-2xl group-hover:rotate-12 transition-transform" />
-              </span>
-            </button>
-          </div>
 
-          <div className="flex justify-center space-x-6 opacity-0 animate-fade-in-up" style={{animationDelay: '1.5s', animationFillMode: 'forwards'}}>
+            <button
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group relative px-9 py-4 rounded-full bg-white/5 border border-indigo-500/40 text-white font-montserrat font-semibold text-xs tracking-[0.2em] uppercase backdrop-blur-2xl hover:bg-indigo-500/20 hover:border-sky-300 hover:scale-105 transition-all duration-300 shadow-xl shadow-indigo-500/10"
+            >
+              <span className="relative z-10 flex items-center space-x-2">
+                <span>LET'S CONNECT</span>
+                <i className="bx bx-paper-plane text-lg group-hover:rotate-12 transition-transform text-sky-400" />
+              </span>
+            </button>
+          </motion.div>
+
+          {/* Social Links Bar */}
+          <motion.div variants={fadeUpVariants} className="flex items-center space-x-5">
             {[
-              // { icon: 'bxl-linkedin', label: 'LinkedIn', href: 'https://linkedin.com/in/karthikkovi/', color: 'hover:text-blue-400' },
-              { icon: 'bxl-github', label: 'GitHub', href: 'https://github.com/kovikarthik', color: 'hover:text-gray-300' },
-              { icon: 'bx-envelope', label: 'Email', href: 'mailto:karthikkovik@gmail.com', color: 'hover:text-red-400' },
-              { icon: 'bx-phone', label: 'Phone', href: 'tel:+15622840297', color: 'hover:text-green-400' }
+              { icon: 'bxl-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/karthikkovi/' },
+              { icon: 'bxl-github', label: 'GitHub', href: 'https://github.com/kovikarthik' },
+              { icon: 'bx-envelope', label: 'Email', href: 'mailto:karthikkovik@gmail.com' },
+              { icon: 'bx-phone', label: 'Phone', href: 'tel:+15622840297' },
             ].map((social) => (
               <a
                 key={social.label}
-                    href={social.href}
-                    target='_blank'
-                    rel="noreferrer"
-                className={`group w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-2xl border border-white/20 hover:border-cyan-400/70 hover:bg-cyan-400/20 transition-all ease-in-out duration-100 active:scale-100 hover:scale-125 hover:rotate-12 ${social.color}`}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-sky-400 hover:border-indigo-400 hover:bg-indigo-500/20 hover:scale-110 transition-all duration-300 backdrop-blur-xl"
                 title={social.label}
               >
-                <i className={`bx ${social.icon} text-2xl transition-all duration-300`} />
+                <i className={`bx ${social.icon} text-xl`} />
               </a>
             ))}
-          </div>
-          <div className='flex justify-center pt-5 opacity-0 animate-fade-in-up' style={{animationDelay: '1.5s', animationFillMode: 'forwards'}}>
-            <a class="libutton" href="https://www.linkedin.com/in/karthikkovi/" target="_blank" rel="noreferrer">Follow on LinkedIn</a>
-          </div>
-        </div>
-
-        {/* Animated scroll indicator */}
-        {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="flex flex-col items-center space-y-2 animate-bounce">
-            <div className="text-cyan-400 text-sm font-medium tracking-widest">SCROLL</div>
-            <div className="w-6 h-12 border-2 border-cyan-400/70 rounded-full p-1">
-              <div className="w-1 h-4 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full mx-auto animate-pulse" />
-            </div>
-          </div>
-        </div> */}
-      </section>
-    </>
-  )
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

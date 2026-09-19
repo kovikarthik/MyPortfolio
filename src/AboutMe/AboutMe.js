@@ -1,114 +1,202 @@
-import React from 'react'
+import React, { useRef, useState } from 'react';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.16,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 1.1,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 export default function AboutMe() {
+  const cardRef = useRef(null);
+  const [isCardHovered, setIsCardHovered] = useState(false);
+
+  // Motion Values for 3D Tilt & Spotlight
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const spotlightX = useMotionValue(200);
+  const spotlightY = useMotionValue(200);
+
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [14, -14]), { damping: 18, stiffness: 220 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-14, 14]), { damping: 18, stiffness: 220 });
+
+  const spotlightBg = useTransform(
+    [spotlightX, spotlightY],
+    ([x, y]) => `radial-gradient(circle 260px at ${x}px ${y}px, rgba(99, 102, 241, 0.25), transparent 80%)`
+  );
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+    spotlightX.set(e.clientX - rect.left);
+    spotlightY.set(e.clientY - rect.top);
+  };
+
+  const handleMouseEnter = () => setIsCardHovered(true);
+
+  const handleMouseLeave = () => {
+    setIsCardHovered(false);
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
-    <>
-    <section id="about" className="min-h-screen py-24 xl:py-32 relative">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-5xl xl:text-7xl font-black mb-2 md:mb-8">
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-                About Me
-              </span>
-            </h2>
-            <div className="w-32 h-2 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full shadow-lg shadow-cyan-500/50" />
-          </div>
+    <section
+      id="about"
+      className="relative w-full min-h-screen text-white font-sans py-24 sm:py-32 px-6 sm:px-12 lg:px-20 overflow-hidden flex items-center selection:bg-indigo-500 selection:text-white"
+    >
+      {/* Background Ambient Lighting */}
+      <div className="absolute top-1/3 left-1/6 w-[32rem] h-[32rem] bg-indigo-600/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/6 w-[28rem] h-[28rem] bg-sky-500/10 rounded-full blur-[170px] pointer-events-none" />
 
-          <div className="grid lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
-            <div className="space-y-10">
-              <div className="text-xl leading-relaxed space-y-8 text-gray-300">
-                <p className="text-2xl leading-relaxed">
-                  I'm a visionary <span className="text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text font-bold">Full Stack Developer</span> currently pursuing 
-                  my Master's in Computer Science at <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text font-semibold">California State University, Long Beach</span>. 
-                  With a stellar <span className="text-transparent bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text font-bold">3.67 GPA</span>, I merge academic excellence 
-                  with industry-leading expertise.
-                </p>
-                <p className="text-lg">
-                  My transformative journey spans from leading elite development teams to architecting scalable applications 
-                  that serve <span className="text-transparent bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text font-bold">30,000+ users</span>. 
-                  I specialize in cutting-edge web technologies, cloud infrastructure, and creating 
-                  revolutionary user experiences that set new industry standards.
-                </p>
-                <p className="text-lg">
-                  Beyond coding, I'm an award-winning innovator with prestigious recognition from ISTE AP 
-                  and Smart India Hackathon. I believe in building technology that creates meaningful, 
-                  lasting impact on people's lives and drives digital transformation.
-                </p>
-                          </div>
-                          
-                          {/* <div className="relative">
-              <div className="relative w-full max-w-lg mx-auto">
-              
-                
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        {/* Eyebrow Header */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center space-x-4 mb-10"
+        >
+          <span className="text-[11px] font-semibold tracking-[0.35em] uppercase text-indigo-400 font-montserrat">
+            01 / ABOUT ME
+          </span>
+          <div className="w-20 h-[1px] bg-gradient-to-r from-indigo-500 via-sky-400 to-transparent" />
+        </motion.div>
+
+        {/* Section Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Content (7 Cols) */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            className="lg:col-span-7 flex flex-col justify-center"
+          >
+            <motion.div variants={fadeUpVariants} className="mb-6">
+              <h2 className="text-5xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-[0.9] text-white">
+                ENGINEERING WITH <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">PRECISION & IMPACT</span>
+              </h2>
+            </motion.div>
+
+            <motion.div variants={fadeUpVariants} className="space-y-6 text-gray-300 text-base sm:text-lg font-light leading-relaxed mb-8">
+              <p>
+                I'm a <strong className="text-indigo-400 font-semibold">Full Stack & Mobile App Developer</strong> currently pursuing my Master's in Computer Science at <strong className="text-white font-semibold">California State University, Long Beach</strong> (<span className="text-sky-400 font-bold">3.778 GPA</span>).
+              </p>
+              <p>
+                My experience spans building cloud systems at <strong className="text-white">Amazon</strong> (AWS Lambda, DynamoDB, SQS, AWS CDK), enterprise-grade multi-tenant platforms, scalable React Native mobile apps, and high-throughput GraphQL microservices. I've led engineering teams to launch production apps impacting over <strong className="text-indigo-400 font-semibold">30,000 active users</strong>.
+              </p>
+              <p>
+                Recognized as an award-winning innovator with the <strong className="text-white">ISTE AP Best Student Innovator Gold Medal</strong> and a <strong className="text-white">Smart India Hackathon National Finalist</strong>, I thrive at the intersection of complex algorithms, seamless UI design, and scalable system architecture.
+              </p>
+            </motion.div>
+
+            {/* Achievement Badges */}
+            <motion.div variants={fadeUpVariants} className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-indigo-500/20">
               {[
-                  { icon: 'bxl-react', position: 'top-0 left-8', color: 'text-cyan-400' },
-                  { icon: 'bxl-nodejs', position: 'top-8 right-0', color: 'text-green-400' },
-                  { icon: 'bxl-aws', position: 'bottom-0 left-0', color: 'text-orange-400' },
-                  { icon: 'bxl-python', position: 'bottom-8 right-8', color: 'text-yellow-400' }
-                ].map((tech, index) => (
-                  <div key={index} className={`absolute ${tech.position} w-12 h-12 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-xl border border-white/20 animate-bounce`} style={{animationDelay: `${index * 0.5}s`}}>
-                    <i className={`bx ${tech.icon} text-2xl ${tech.color}`} />
+                { label: 'ISTE GOLD MEDAL', detail: 'Best Innovator 2023' },
+                { label: 'SIH NATIONAL', detail: 'Finalist 2022' },
+                { label: 'HACKERRANK', detail: 'Top 5% Problem Solver' },
+                { label: 'GPA', detail: '3.778 / 4.0 MS CS' },
+              ].map((badge) => (
+                <div key={badge.label} className="p-3 bg-white/5 rounded-xl border border-indigo-500/25 backdrop-blur-md">
+                  <div className="text-[10px] font-montserrat text-indigo-400 tracking-widest font-semibold">{badge.label}</div>
+                  <div className="text-xs text-gray-300 mt-1">{badge.detail}</div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Right 3D Interactive Spotlight Card (5 Cols) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center"
+          >
+            <div className="perspective-1000 w-full max-w-md">
+              <motion.div
+                ref={cardRef}
+                onMouseMove={handleMouseMove}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  rotateX,
+                  rotateY,
+                  transformStyle: 'preserve-3d',
+                }}
+                className="relative rounded-3xl p-8 bg-slate-900/60 border border-indigo-500/30 shadow-[0_0_40px_rgba(99,102,241,0.15)] backdrop-blur-2xl overflow-hidden group cursor-pointer"
+              >
+                {/* Dynamic Mouse Spotlight Overlay */}
+                <motion.div
+                  className="pointer-events-none absolute -inset-px transition-opacity duration-300 rounded-3xl"
+                  style={{
+                    background: spotlightBg,
+                    opacity: isCardHovered ? 1 : 0,
+                  }}
+                />
+
+                <div className="relative z-10 space-y-6">
+                  <div className="flex items-center justify-between border-b border-indigo-500/20 pb-4">
+                    <span className="text-xs font-montserrat tracking-[0.25em] text-indigo-400 font-bold uppercase">
+                      STATISTICAL HIGHLIGHTS
+                    </span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
                   </div>
-                ))}
-                              
-              </div>
-            </div> */}
 
-            
-            </div>
-
-            <div>
-                <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 gap-6 pt-2">
                     {[
-                    { label: 'Projects Delivered', value: '25+', icon: 'bx-check-circle', color: 'from-green-400 to-emerald-500' },
-                    { label: 'Users Impacted', value: '42K+', icon: 'bx-user', color: 'from-blue-400 to-cyan-500' },
-                    { label: 'Tech Stack', value: '20+', icon: 'bx-code-alt', color: 'from-purple-400 to-pink-500' },
-                    { label: 'Experience', value: '3+ Years', icon: 'bx-time', color: 'from-orange-400 to-red-500' }
+                      { label: 'PROJECTS DELIVERED', value: '25+' },
+                      { label: 'USERS IMPACTED', value: '42K+' },
+                      { label: 'TECH STACK', value: '20+' },
+                      { label: 'EXPERIENCE', value: '3+ YRS' },
                     ].map((stat) => (
-                    <div key={stat.label} className="group relative">
-                        <div className="bg-white/10 p-4 md:p-8 rounded-2xl backdrop-blur-2xl border border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:scale-105 hover:rotate-1">
-                        <div className="flex flex-row items-center justify-center space-x-2 xl:space-x-4 mb-4">
-                            <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r ${stat.color} flex items-center justify-center`}>
-                            <i className={`bx ${stat.icon} text-xl xl:text-2xl text-white`} />
-                            </div>
-                            <div className={`text-xl md:text-2xl xl:text-3xl leading-6 font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
-                            {stat.value}
-                            </div>
+                      <div key={stat.label} className="p-4 bg-black/50 rounded-2xl border border-indigo-500/20">
+                        <div className="text-3xl font-black bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent tracking-wide">{stat.value}</div>
+                        <div className="text-[10px] font-montserrat text-gray-400 tracking-wider uppercase mt-1">
+                          {stat.label}
                         </div>
-                        <div className="text-sm text-gray-400 font-medium tracking-wide">{stat.label}</div>
-                        </div>
-                    </div>
+                      </div>
                     ))}
-                </div>
-                <br/>
-              <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-8 rounded-2xl border border-cyan-400/30 backdrop-blur-xl">
-                <h3 className="text-2xl font-bold text-cyan-300 mb-4 flex items-center space-x-3">
-                  <i className="bx bx-trophy text-3xl" />
-                  <span>Notable Achievements</span>
-                </h3>
-                <div className="grid md:grid-cols-2 gap-4 text-gray-300">
-                  <div className="flex items-center space-x-3">
-                    <i className="bx bx-medal text-yellow-400 text-xl" />
-                    <span>ISTE AP Gold Medal Winner</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <i className="bx bx-trending-up text-green-400 text-xl" />
-                    <span>HackerRank Top 5%</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <i className="bx bx-brain text-purple-400 text-xl" />
-                    <span>SIH National Finalist</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <i className="bx bx-group text-blue-400 text-xl" />
-                    <span>Tech Club Coordinator</span>
+
+                  <div className="p-5 bg-gradient-to-r from-indigo-500/10 via-sky-500/10 to-transparent rounded-2xl border border-indigo-500/30">
+                    <div className="text-xs font-montserrat text-indigo-400 font-semibold tracking-wider uppercase mb-1">
+                      FEATURED ROLES
+                    </div>
+                    <div className="text-sm font-semibold text-white">Software Engineer Intern @ Amazon</div>
+                    <div className="text-xs text-gray-300 mt-1">AWS Lambda, DynamoDB, SQS, AWS CDK, CI/CD & AI assistant operational automation.</div>
                   </div>
                 </div>
-              </div>
-           </div>
-          </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
-      </section>
-    </>
-  )
+      </div>
+    </section>
+  );
 }

@@ -1,82 +1,138 @@
-import React from 'react'
-import { experience } from '../Utils/data'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { experience } from '../Utils/data';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.16,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(6px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.9,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 export default function Experience() {
   return (
-    <>
-      <section id="experience" className="py-14 md:py-24 xl:py-32 relative">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-5xl xl:text-7xl font-black mb-2 md:mb-8">
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-                Professional Journey
-              </span>
-            </h2>
-            <div className="w-32 h-2 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full shadow-lg shadow-cyan-500/50" />
-          </div>
+    <section
+      id="experience"
+      className="relative w-full text-white font-sans py-24 sm:py-32 px-6 sm:px-12 lg:px-20 overflow-hidden selection:bg-indigo-500 selection:text-white"
+    >
+      {/* Background Glows */}
+      <div className="absolute top-1/4 right-1/4 w-[32rem] h-[32rem] bg-indigo-600/10 rounded-full blur-[170px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/4 w-[28rem] h-[28rem] bg-sky-500/10 rounded-full blur-[160px] pointer-events-none" />
 
-          <div className="max-w-6xl mx-auto space-y-16">
-            {experience.map((exp, index) => (
-              <div key={index} className="group relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative bg-white/10 p-5 md:p-8 xl:p-10 rounded-3xl backdrop-blur-2xl border border-white/20 hover:border-cyan-400/50 transition-all duration-500 group-hover:scale-[1.02]">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
-                    <div className="flex items-start space-x-4 xl:space-x-6 text-left">
-                      <div className={`p-3 xl:p-4 w-16 rounded-full bg-gradient-to-r ${exp.current ? 'from-green-400 to-emerald-500' : 'from-blue-400 to-purple-500'} flex items-center justify-center`}>
-                        <i className="bx bx-briefcase text-xl xl:text-2xl text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl xl:text-3xl font-black text-white mb-3">{exp.role}</h3>
-                        <div className="text-cyan-400 text-xl font-bold mb-2">{exp.company}</div>
-                        <div className="text-gray-400 flex items-center space-x-2">
-                          <i className="bx bx-map text-lg" />
-                          <span>{exp.location}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={`${exp.current ? 'bg-green-400/20 border-green-400/50 text-green-300' : 'bg-blue-400/20 border-blue-400/50 text-blue-300'} font-bold px-6 py-3 rounded-full border backdrop-blur-xl mt-6 lg:mt-0 flex items-center space-x-2`}>
-                      {exp.current && <i className="bx bx-time-five animate-pulse" />}
-                      <span>{exp.period}</span>
-                    </div>
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        {/* Eyebrow Header */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center space-x-4 mb-6"
+        >
+          <span className="text-[11px] font-semibold tracking-[0.35em] uppercase text-indigo-400 font-montserrat">
+            04 / CAREER MILESTONES
+          </span>
+          <div className="w-20 h-[1px] bg-gradient-to-r from-indigo-500 via-sky-400 to-transparent" />
+        </motion.div>
+
+        {/* Section Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-16"
+        >
+          <h2 className="text-5xl sm:text-7xl font-black uppercase tracking-tight text-white">
+            PROFESSIONAL <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">EXPERIENCE</span>
+          </h2>
+          <p className="text-base sm:text-lg text-gray-300 font-light max-w-2xl mt-2">
+            A track record of engineering leadership, scalable product releases, and impactful full-stack execution.
+          </p>
+        </motion.div>
+
+        {/* Experience Timeline */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="space-y-8"
+        >
+          {experience.map((exp, idx) => (
+            <motion.div
+              key={exp.company}
+              variants={fadeUpVariants}
+              className="relative bg-slate-900/60 border border-indigo-500/25 rounded-3xl p-8 sm:p-12 hover:border-indigo-400 transition-all duration-500 overflow-hidden group shadow-2xl backdrop-blur-2xl"
+            >
+              {/* Top Accent Flare */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between border-b border-indigo-500/20 pb-6 mb-6">
+                <div>
+                  <div className="flex items-center space-x-3 mb-2">
+                    <span className="text-xs font-montserrat text-indigo-400 font-semibold tracking-widest uppercase">
+                      0{idx + 1} - {exp.location}
+                    </span>
+                    {exp.current && (
+                      <span className="px-3 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-[10px] font-montserrat tracking-widest uppercase font-bold">
+                        PRESENT ROLE
+                      </span>
+                    )}
                   </div>
+                  <h3 className="text-3xl sm:text-4xl font-black text-white tracking-wide">
+                    {exp.role} <span className="bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">@ {exp.company}</span>
+                  </h3>
+                </div>
 
-                  <div className="grid lg:grid-cols-2 gap-10">
-                    <div>
-                      <h4 className="text-xl font-bold text-white mb-6 flex items-center space-x-3">
-                        <i className="bx bx-rocket text-cyan-400 text-2xl" />
-                        <span>Key Achievements</span>
-                      </h4>
-                      <ul className="space-y-4">
-                        {exp.achievements.map((achievement, idx) => (
-                          <li key={idx} className="flex items-start space-x-4 group/item">
-                            <i className="bx bx-check-circle text-cyan-400 text-xl mt-1 group-hover/item:scale-125 transition-transform" />
-                            <span className="text-gray-300 text-start leading-relaxed text-lg group-hover/item:text-white transition-colors">{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="text-xl font-bold text-white mb-6 flex items-center space-x-3">
-                        <i className="bx bx-cog text-purple-400 text-2xl" />
-                        <span>Technologies Used</span>
-                      </h4>
-                      <div className="flex flex-wrap gap-3">
-                        {exp.tech.map((tech, techIndex) => (
-                          <span key={tech} className="group/tech relative px-4 py-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-300 rounded-xl text-sm font-semibold border border-cyan-400/30 hover:border-cyan-300 hover:scale-110 hover:rotate-3 transition-all duration-300 cursor-default">
-                            <span className="relative z-10">{tech}</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300"></div>
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                <div className="mt-4 lg:mt-0 text-left lg:text-right">
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-black/50 border border-indigo-500/30 text-xs font-mono text-indigo-300">
+                    {exp.period}
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  )
+
+              {/* Achievements List */}
+              <ul className="space-y-3 mb-8 text-sm sm:text-base text-gray-300 font-light">
+                {exp.achievements.map((item, i) => (
+                  <li key={i} className="flex items-start space-x-3">
+                    <i className="bx bx-chevron-right text-sky-400 text-xl mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Tech Stack Pills */}
+              <div className="pt-4 border-t border-indigo-500/15 flex flex-wrap gap-2">
+                {exp.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1 rounded-full bg-black/40 border border-indigo-500/20 text-xs font-montserrat text-indigo-200"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
 }
