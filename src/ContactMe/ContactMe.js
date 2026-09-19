@@ -108,9 +108,16 @@ export default function ContactMe() {
       } catch (fallbackErr) {
         setLoading(false);
         setEmailStatus('SEND TRANSMISSION');
-        const errMsg = fallbackErr?.text || primaryErr?.text || fallbackErr?.message || primaryErr?.message || 'Failed to send transmission';
-        toast.error(`Transmission error: ${errMsg}`);
-        console.error('EmailJS error:', primaryErr, fallbackErr);
+        const errMsg = fallbackErr?.text || primaryErr?.text || fallbackErr?.message || primaryErr?.message || '';
+        
+        toast.warn(`EmailJS API Notice: ${errMsg || 'Service unavailable'}. Launching mail client...`, { autoClose: 4000 });
+        
+        // Launch mailto fallback prefilled with form data
+        const mailtoSubject = encodeURIComponent(form.subject || 'Portfolio Contact Form Transmission');
+        const mailtoBody = encodeURIComponent(
+          `Sender Name: ${form.name}\nSender Email: ${form.email}\n\nMessage:\n${form.message}`
+        );
+        window.location.href = `mailto:karthikkovik@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
       }
     }
   };
