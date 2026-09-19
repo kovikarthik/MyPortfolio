@@ -182,13 +182,26 @@ export const projects = [
 
 export const experience = [
     {
+      company: 'Amazon',
+      role: 'Software Engineer Intern',
+      period: 'May 2026 - Aug 2026',
+      location: 'Bellevue, WA, USA',
+      current: false,
+      achievements: [
+        'Architected batch data remediation pipelines utilizing AWS Lambda, DynamoDB, and SQS',
+        'Automated cloud infrastructure using AWS CDK and established CI/CD pipelines with CloudWatch',
+        'Shipped an AI assistant skill for operational workflows automating batch job management'
+      ],
+      tech: ['Java', 'Python', 'AWS Lambda', 'DynamoDB', 'SQS', 'AWS CDK', 'CloudWatch', 'CI/CD']
+    },
+    {
       company: 'Associated Students, Inc. - CSULB',
       role: 'Software Developer',
       period: 'Feb 2025 - Present',
       location: 'California, USA',
       current: true,
       achievements: [
-        'Developed FutureU Mobile App serving 12,000+ monthly users',
+        'Developed FutureU Mobile App serving 12,000+ monthly users across campus',
         'Implemented WCAG 2.1/2.2 AA accessibility standards',
         'Built CI/CD pipeline reducing deployment effort by 40%',
         'Optimized AWS infrastructure reducing load times by 30%',
@@ -210,6 +223,20 @@ export const experience = [
         'Built MirrorMate Windows app with Wi-Fi screen sharing'
       ],
       tech: ['GraphQL', 'Next.js', 'Redis', 'C#', 'MongoDB', 'React Native']
+    },
+    {
+      company: 'Redbee 365 Studio Pvt Ltd',
+      role: 'Full Stack Developer',
+      period: 'Sep 2022 - Dec 2022',
+      location: 'Chennai, India',
+      current: false,
+      achievements: [
+        'Engineered full-stack AI salon appointment scheduling platform (Booking Bee) using Angular and NestJS',
+        'Implemented real-time voice call scheduling, live chat, and payment gateway workflows',
+        'Converted Figma wireframes into responsive Angular interfaces with Material UI and Bootstrap',
+        'Optimized database schemas and REST API endpoints for high performance'
+      ],
+      tech: ['Angular', 'NestJS', 'MongoDB', 'TypeScript', 'Node.js', 'REST APIs']
     }
   ];
 

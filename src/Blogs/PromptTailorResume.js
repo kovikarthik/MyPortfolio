@@ -32,7 +32,7 @@ Please optimize my resume for this job by following these rules:
 6. Deliverable
    - Output as a single-page LaTeX resume.
    - Ensure clean, professional design with no special formatting that breaks ATS parsing.
-   - Perfectly fill the first page — no white space at the bottom, and no spillover to a second page. Maintain my current LaTeX structure exactly as is.
+   - Perfectly fill the first page - no white space at the bottom, and no spillover to a second page. Maintain my current LaTeX structure exactly as is.
    - Final result should be tailored, concise, and immediately job-ready.
 `;
 
@@ -46,7 +46,7 @@ export default function PromptTailorResume() {
     <main className="mx-auto max-w-3xl px-4 py-16">
       <h1 className="text-3xl font-bold tracking-tight">Resume Tailoring Prompt</h1>
       <p className="mt-3 text-sm text-gray-500">
-        Free to use. Please don’t fabricate experience—highlight what’s true and relevant.
+        Free to use. Please don’t fabricate experience-highlight what’s true and relevant.
       </p>
 
       <div className="mt-6 rounded-2xl border border-cyan-400/50 bg-white/10 shadow-sm backdrop-blur">
