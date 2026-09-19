@@ -37,58 +37,82 @@ export default function ContactMe() {
     };
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSuccess = () => {
+    setLoading(false);
+    toast.success(
+      <span style={{ textAlign: 'center' }}>
+        Transmission received! <br /> I’ll get back to you shortly. 🚀
+      </span>
+    );
+    setTimeout(() => {
+      setEmailStatus('SEND TRANSMISSION');
+    }, 1000);
+    setForm({
+      name: '',
+      email: '',
+      message: '',
+      subject: '',
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setEmailStatus('TRANSMITTING...');
-    emailjs
-      .send(
+
+    const templateParams = {
+      from_name: form.name,
+      from_email: form.email,
+      name: form.name,
+      email: form.email,
+      user_name: form.name,
+      user_email: form.email,
+      reply_to: form.email,
+      to_name: 'Karthik Kovi',
+      to_email: 'karthikkovik@gmail.com',
+      subject: form.subject,
+      message: form.message,
+      page_url: window.location.href,
+      submitted_at: new Date().toLocaleString('en-US', {
+        timeZone: 'America/Los_Angeles',
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      }),
+      year: new Date().getFullYear(),
+    };
+
+    try {
+      // Primary credentials attempt
+      await emailjs.send(
         'service_znyy4xo',
         'template_98y4ahf',
-        {
-          from_name: form.name,
-          from_email: form.email,
-          subject: form.subject,
-          message: form.message,
-          page_url: window.location.href,
-          submitted_at: new Date().toLocaleString('en-US', {
-            timeZone: 'America/Los_Angeles',
-            weekday: 'short',
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-          }),
-          year: new Date().getFullYear(),
-        },
-        { publicKey: 'EtOer1HulMBDZD3bi' }
-      )
-      .then(
-        () => {
-          setLoading(false);
-          toast.success(
-            <span style={{ textAlign: 'center' }}>
-              Transmission received! <br /> I’ll get back to you shortly. 🚀
-            </span>
-          );
-
-          setTimeout(() => {
-            setEmailStatus('SEND TRANSMISSION');
-          }, 1000);
-          setForm({
-            name: '',
-            email: '',
-            message: '',
-            subject: '',
-          });
-        },
-        (error) => {
-          setLoading(false);
-          toast.error('Failed to send transmission');
-          console.error(error);
-        }
+        templateParams,
+        'EtOer1HulMBDZD3bi'
       );
+      handleSuccess();
+    } catch (primaryErr) {
+      console.warn('Primary EmailJS service failed, trying fallback...', primaryErr);
+      try {
+        // Fallback credentials attempt
+        await emailjs.send(
+          'service_kez1h7i',
+          'template_uxz9xbf',
+          templateParams,
+          'jz9yQYm-QSbfpTR9D'
+        );
+        handleSuccess();
+      } catch (fallbackErr) {
+        setLoading(false);
+        setEmailStatus('SEND TRANSMISSION');
+        const errMsg = fallbackErr?.text || primaryErr?.text || fallbackErr?.message || primaryErr?.message || 'Failed to send transmission';
+        toast.error(`Transmission error: ${errMsg}`);
+        console.error('EmailJS error:', primaryErr, fallbackErr);
+      }
+    }
   };
 
   return (
