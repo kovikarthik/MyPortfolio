@@ -1,18 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.68d84137.css",
-    "main.js": "/static/js/main.224a9512.js",
+    "main.css": "/static/css/main.34c9db68.css",
+    "main.js": "/static/js/main.81155b0e.js",
     "static/js/453.6f02a0ff.chunk.js": "/static/js/453.6f02a0ff.chunk.js",
     "static/media/FutureU_App.png": "/static/media/FutureU_App.cfbd148839d66303d38e.png",
     "static/media/Origem.png": "/static/media/Origem.3a6eaab2a3948d8d14f0.png",
     "static/media/NativeNest_Event.jpeg": "/static/media/NativeNest_Event.f65cfea0b16c0681d4e6.jpeg",
+    "static/media/Bookingbee.png": "/static/media/Bookingbee.75a0775f352186cb73b5.png",
+    "static/media/InstantBackend.png": "/static/media/InstantBackend.f239f896f751f7012a62.png",
+    "static/media/JobTracker.png": "/static/media/JobTracker.f238003c160ae7cea5a6.png",
+    "static/media/HeedSites.png": "/static/media/HeedSites.e547c4ab008c06a332f7.png",
+    "static/media/Arikya.png": "/static/media/Arikya.abd96e0360e050ef093d.png",
     "index.html": "/index.html",
-    "main.68d84137.css.map": "/static/css/main.68d84137.css.map",
-    "main.224a9512.js.map": "/static/js/main.224a9512.js.map",
+    "main.34c9db68.css.map": "/static/css/main.34c9db68.css.map",
+    "main.81155b0e.js.map": "/static/js/main.81155b0e.js.map",
     "453.6f02a0ff.chunk.js.map": "/static/js/453.6f02a0ff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.68d84137.css",
-    "static/js/main.224a9512.js"
+    "static/css/main.34c9db68.css",
+    "static/js/main.81155b0e.js"
   ]
 }
