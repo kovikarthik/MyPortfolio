@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { toast } from 'react-toastify';
@@ -22,20 +22,6 @@ export default function ContactMe() {
       [name]: value,
     });
   };
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://platform.linkedin.com/badges/js/profile.js';
-    script.async = true;
-    script.defer = true;
-    script.type = 'text/javascript';
-
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   const handleSuccess = () => {
     setLoading(false);
@@ -308,8 +294,53 @@ export default function ContactMe() {
           </div>
         </div>
 
-        <div className="badge-base LI-profile-badge container mx-auto px-6 flex justify-center mt-12" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="karthikkovi" data-version="v1">
-          <a className="badge-base__link LI-simple-link" aria-label="Karthik Kovi LinkedIn Profile" href="https://www.linkedin.com/in/karthikkovi/"></a>
+        {/* Custom LinkedIn Profile Card */}
+        <div className="container mx-auto px-6 flex justify-center mt-12">
+          <div className="relative w-full max-w-md rounded-3xl bg-slate-900/70 border border-indigo-500/30 p-6 backdrop-blur-2xl shadow-xl hover:border-indigo-400 transition-all duration-300 group">
+            <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-indigo-400/40 to-transparent" />
+
+            <div className="flex items-center justify-between pb-4 border-b border-indigo-500/15 mb-4">
+              <div className="flex items-center space-x-2 text-[#0A66C2]">
+                <i className="bx bxl-linkedin-square text-2xl" />
+                <span className="font-bold text-sm tracking-wide text-white">LinkedIn</span>
+              </div>
+              <span className="text-[10px] font-mono uppercase text-emerald-400 tracking-wider flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Available to Connect
+              </span>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-indigo-500/40 shrink-0 shadow-md shadow-indigo-500/20">
+                <img
+                  src={process.env.PUBLIC_URL + '/profile.png'}
+                  alt="Karthik Kovi"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h4 className="text-lg font-bold text-white tracking-wide truncate">Karthik Kovi</h4>
+                <p className="text-xs text-gray-300 line-clamp-2 leading-relaxed mt-0.5">
+                  Full Stack & Mobile App Developer | California State University, Long Beach
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-indigo-500/15 flex items-center justify-between gap-3">
+              <span className="text-[11px] font-montserrat text-gray-400 tracking-wider">
+                @karthikkovi
+              </span>
+              <a
+                href="https://www.linkedin.com/in/karthikkovi/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center space-x-2 px-5 py-2 rounded-full bg-[#0A66C2]/15 border border-[#0A66C2]/40 text-sky-300 hover:bg-[#0A66C2] hover:text-white transition-all duration-300 text-xs font-montserrat font-semibold tracking-wider shadow-sm"
+              >
+                <span>View Profile</span>
+                <i className="bx bx-right-arrow-alt text-base" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
