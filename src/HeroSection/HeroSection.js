@@ -145,7 +145,6 @@ export default function HeroSection() {
               { icon: 'bxl-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/karthikkovi/' },
               { icon: 'bxl-github', label: 'GitHub', href: 'https://github.com/kovikarthik' },
               { icon: 'bx-envelope', label: 'Email', href: 'mailto:karthikkovik@gmail.com' },
-              { icon: 'bx-phone', label: 'Phone', href: 'tel:+15622840297' },
             ].map((social) => (
               <a
                 key={social.label}

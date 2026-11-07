@@ -188,21 +188,6 @@ export default function ContactMe() {
                   </div>
                 </a>
 
-                <a
-                  href="tel:+15622840297"
-                  className="flex items-center space-x-4 p-4 rounded-2xl bg-black/40 border border-indigo-500/20 hover:border-indigo-400 transition-all group"
-                >
-                  <div className="w-12 h-12 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all">
-                    <i className="bx bx-phone text-xl" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-montserrat text-gray-400 uppercase tracking-widest">PHONE</div>
-                    <div className="text-sm font-semibold text-white group-hover:text-indigo-400 transition-colors">
-                      +1 (562) 284-0297
-                    </div>
-                  </div>
-                </a>
-
                 <div className="flex items-center space-x-4 p-4 rounded-2xl bg-black/40 border border-indigo-500/20">
                   <div className="w-12 h-12 rounded-full bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
                     <i className="bx bx-map text-xl" />
@@ -225,7 +210,6 @@ export default function ContactMe() {
                   { icon: 'bxl-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/karthikkovi/' },
                   { icon: 'bxl-github', label: 'GitHub', href: 'https://github.com/kovikarthik' },
                   { icon: 'bx-envelope', label: 'Email', href: 'mailto:karthikkovik@gmail.com' },
-                  { icon: 'bx-phone', label: 'Phone', href: 'tel:+15622840297' },
                 ].map((s) => (
                   <a
                     key={s.label}

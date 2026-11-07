@@ -18,7 +18,6 @@ export default function Footer() {
             { icon: 'bxl-linkedin', href: 'https://www.linkedin.com/in/karthikkovi/', label: 'LinkedIn' },
             { icon: 'bxl-github', href: 'https://github.com/kovikarthik', label: 'GitHub' },
             { icon: 'bx-envelope', href: 'mailto:karthikkovik@gmail.com', label: 'Email' },
-            { icon: 'bx-phone', href: 'tel:+15622840297', label: 'Phone' },
           ].map((social) => (
             <a
               key={social.label}
