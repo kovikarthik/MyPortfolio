@@ -104,7 +104,7 @@ export default function AboutMe() {
 
             <motion.div variants={fadeUpVariants} className="space-y-6 text-gray-300 text-base sm:text-lg font-light leading-relaxed mb-8">
               <p>
-                I'm a <strong className="text-indigo-400 font-semibold">Full Stack & Mobile App Developer</strong> currently pursuing my Master's in Computer Science at <strong className="text-white font-semibold">California State University, Long Beach</strong> (<span className="text-sky-400 font-bold">3.778 GPA</span>).
+                I'm an <strong className="text-indigo-400 font-semibold">SDE @ Amazon</strong> and Full Stack & Mobile Developer pursuing my Master's in Computer Science at <strong className="text-white font-semibold">California State University, Long Beach</strong> (<span className="text-sky-400 font-bold">3.778 GPA</span>).
               </p>
               <p>
                 My experience spans building cloud systems at <strong className="text-white">Amazon</strong> (AWS Lambda, DynamoDB, SQS, AWS CDK), enterprise-grade multi-tenant platforms, scalable React Native mobile apps, and high-throughput GraphQL microservices. I've led engineering teams to launch production apps impacting over <strong className="text-indigo-400 font-semibold">30,000 active users</strong>.
@@ -188,8 +188,8 @@ export default function AboutMe() {
                     <div className="text-xs font-montserrat text-indigo-400 font-semibold tracking-wider uppercase mb-1">
                       FEATURED ROLES
                     </div>
-                    <div className="text-sm font-semibold text-white">Software Engineer Intern @ Amazon</div>
-                    <div className="text-xs text-gray-300 mt-1">AWS Lambda, DynamoDB, SQS, AWS CDK, CI/CD & AI assistant operational automation.</div>
+                    <div className="text-sm font-semibold text-white">SDE @ Amazon</div>
+                    <div className="text-xs text-gray-300 mt-1">AWS Lambda, DynamoDB, SQS, AWS CDK, CI/CD & AI Automations.</div>
                   </div>
                 </div>
               </motion.div>

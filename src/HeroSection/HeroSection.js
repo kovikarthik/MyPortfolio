@@ -26,10 +26,10 @@ const fadeUpVariants = {
 };
 
 const rotatingTitles = [
-  'Full Stack Architect',
-  'Mobile App Developer',
-  'AWS Cloud Engineer',
-  'AI / ML Developer',
+  'SDE @ Amazon',
+  'Full Stack Developer',
+  'Mobile & Cloud Architect',
+  'AI Automations Engineer',
 ];
 
 export default function HeroSection() {
@@ -105,7 +105,7 @@ export default function HeroSection() {
 
           {/* Tech Tag Pills */}
           <motion.div variants={fadeUpVariants} className="flex flex-wrap justify-center gap-3 mb-12">
-            {['React Native', 'React.js', 'Node.js', 'AWS', 'GraphQL', 'TypeScript', 'MongoDB', 'Python'].map((tech) => (
+            {['React Native', 'React.js', 'Node.js', 'SpringBoot', 'AWS', 'GraphQL', 'TypeScript', 'GitOps', 'Python'].map((tech) => (
               <span
                 key={tech}
                 className="px-4 py-1.5 rounded-full bg-white/5 border border-indigo-500/30 text-indigo-200 text-xs font-montserrat tracking-wider hover:border-sky-400 hover:scale-105 hover:bg-sky-400/10 hover:text-sky-300 transition-all duration-300 backdrop-blur-md"

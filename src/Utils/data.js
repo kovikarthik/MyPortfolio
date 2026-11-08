@@ -183,7 +183,7 @@ export const projects = [
 export const experience = [
     {
       company: 'Amazon',
-      role: 'Software Engineer Intern',
+      role: 'Software Development Engineer (SDE)',
       period: 'May 2026 - Aug 2026',
       location: 'Bellevue, WA, USA',
       current: false,

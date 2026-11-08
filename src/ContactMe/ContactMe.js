@@ -180,7 +180,7 @@ export default function ContactMe() {
                   </div>
                   <div>
                     <div className="text-[10px] font-montserrat text-gray-400 uppercase tracking-widest">LOCATION</div>
-                    <div className="text-sm font-semibold text-white">Long Beach, California, USA</div>
+                    <div className="text-sm font-semibold text-white">Bellevue, Washington, USA</div>
                   </div>
                 </div>
               </div>
@@ -310,7 +310,7 @@ export default function ContactMe() {
               </span>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-start space-x-4">
               <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-indigo-500/40 shrink-0 shadow-md shadow-indigo-500/20">
                 <img
                   src={process.env.PUBLIC_URL + '/profile.png'}
@@ -319,10 +319,24 @@ export default function ContactMe() {
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className="text-lg font-bold text-white tracking-wide truncate">Karthik Kovi</h4>
-                <p className="text-xs text-gray-300 line-clamp-2 leading-relaxed mt-0.5">
-                  Full Stack & Mobile App Developer | California State University, Long Beach
+                <div className="flex items-center space-x-2">
+                  <h4 className="text-lg font-bold text-white tracking-wide truncate">Karthik Kovi</h4>
+                  <span className="text-[10px] text-gray-400 font-mono">He/Him</span>
+                </div>
+                <p className="text-xs text-sky-400 font-semibold mt-0.5">
+                  SDE @ Amazon | Mentor
                 </p>
+                <p className="text-[11px] text-gray-300 line-clamp-2 leading-relaxed mt-0.5">
+                  Full Stack Developer | Mobile & Web Apps (iOS, Android, React, Node.js, SpringBoot) | Cloud & DevOps (AWS, GitOps) | AI Automations
+                </p>
+                <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mt-2 text-[10px] text-gray-400 font-mono">
+                  <span className="flex items-center gap-1">
+                    <i className="bx bx-map text-indigo-400" />
+                    Bellevue, WA, USA
+                  </span>
+                  <span>•</span>
+                  <span className="text-sky-300 font-semibold">1,500+ followers • 500+ connections</span>
+                </div>
               </div>
             </div>
 
