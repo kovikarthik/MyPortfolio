@@ -180,7 +180,7 @@ export default function ContactMe() {
                   </div>
                   <div>
                     <div className="text-[10px] font-montserrat text-gray-400 uppercase tracking-widest">LOCATION</div>
-                    <div className="text-sm font-semibold text-white">Bellevue, Washington, USA</div>
+                    <div className="text-sm font-semibold text-white">Los Angeles, California, USA</div>
                   </div>
                 </div>
               </div>
@@ -332,10 +332,10 @@ export default function ContactMe() {
                 <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mt-2 text-[10px] text-gray-400 font-mono">
                   <span className="flex items-center gap-1">
                     <i className="bx bx-map text-indigo-400" />
-                    Bellevue, WA, USA
+                    Los Angeles, CA, USA
                   </span>
                   <span>•</span>
-                  <span className="text-sky-300 font-semibold">1,500+ followers • 500+ connections</span>
+                  <span className="text-sky-300 font-semibold">1,620 followers • 500+ connections</span>
                 </div>
               </div>
             </div>
